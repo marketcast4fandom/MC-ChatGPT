@@ -14,17 +14,25 @@ const serverConfig = getServerSideConfig();
 
 export default async function App() {
   return (
-    <Authenticator loginMechanisms={['username']}>
-        {({ signOut, user }) => (
-            <>
-              <Home />
-              {serverConfig?.isVercel && (
-                <>
-                  <Analytics />
-                </>
-              )}
-            </>
-        )}
-    </Authenticator>
+    <>
+      <Home />
+      {serverConfig?.isVercel && (
+        <>
+          <Analytics />
+        </>
+      )}
+    </>
+//     <Authenticator loginMechanisms={['username']}>
+//         {({ signOut, user }) => (
+//             <>
+//               <Home />
+//               {serverConfig?.isVercel && (
+//                 <>
+//                   <Analytics />
+//                 </>
+//               )}
+//             </>
+//         )}
+//     </Authenticator>
   );
 }
