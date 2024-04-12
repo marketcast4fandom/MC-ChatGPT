@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplify1265bb8cd5d14-staging-6f754-authRole",
+      "UnauthRoleArn": "arn:aws:iam::914785610491:role/amplify-amplify1265bb8cd5d14-staging-6f754-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::914785610491:role/amplify-amplify1265bb8cd5d14-staging-6f754-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-amplify1265bb8cd5d14-staging-6f754-deployment",
+      "UnauthRoleName": "amplify-amplify1265bb8cd5d14-staging-6f754-unauthRole",
+      "StackName": "amplify-amplify1265bb8cd5d14-staging-6f754",
+      "StackId": "arn:aws:cloudformation:us-east-1:914785610491:stack/amplify-amplify1265bb8cd5d14-staging-6f754/bc29c4f0-f8e4-11ee-be61-126f3948e471",
+      "AmplifyAppId": "d17zmq9mo5r20y"
+    },
+    "categories": {
+      "auth": {
+        "MCChatGPT": {}
+      }
+    }
+  }
+}
