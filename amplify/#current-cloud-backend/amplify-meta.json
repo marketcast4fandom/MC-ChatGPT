@@ -1,0 +1,61 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplify1265bb8cd5d14-staging-6f754-authRole",
+      "UnauthRoleArn": "arn:aws:iam::914785610491:role/amplify-amplify1265bb8cd5d14-staging-6f754-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::914785610491:role/amplify-amplify1265bb8cd5d14-staging-6f754-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-amplify1265bb8cd5d14-staging-6f754-deployment",
+      "UnauthRoleName": "amplify-amplify1265bb8cd5d14-staging-6f754-unauthRole",
+      "StackName": "amplify-amplify1265bb8cd5d14-staging-6f754",
+      "StackId": "arn:aws:cloudformation:us-east-1:914785610491:stack/amplify-amplify1265bb8cd5d14-staging-6f754/bc29c4f0-f8e4-11ee-be61-126f3948e471",
+      "AmplifyAppId": "d17zmq9mo5r20y"
+    }
+  },
+  "auth": {
+    "MCChatGPT": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS",
+            "REQUIRES_UPPERCASE"
+          ]
+        },
+        "signupAttributes": [],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "output": {
+        "UserPoolId": "us-east-1_iAnRkW6tb",
+        "AppClientIDWeb": "1d844ip40jv02jofgn27in1op8",
+        "AppClientID": "4gir9e132savgjlrdae1kvaf2l",
+        "IdentityPoolId": "us-east-1:01271431-521e-4290-bd66-c5cba3275c6e",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:914785610491:userpool/us-east-1_iAnRkW6tb",
+        "IdentityPoolName": "testAuthIdentityPool__staging",
+        "UserPoolName": "MCChatGPT"
+      },
+      "lastPushTimeStamp": "2024-04-12T16:12:59.613Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify1265bb8cd5d14-staging-6f754-deployment/amplify-cfn-templates/auth/MCChatGPT-cloudformation-template.json",
+        "logicalId": "authMCChatGPT"
+      },
+      "lastPushDirHash": "Ebwge53mU4D4hyz6I2OkAexEwQ8="
+    }
+  }
+}
