@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "testAuthIdentityPool",
+    "identityPoolName": "amplify_backend_manager_d17zmq9mo5r20y",
     "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "mcchat0ed2c6e0",
-    "userPoolName": "MCChatGPT",
+    "userPoolName": "amplify_backend_manager_d17zmq9mo5r20y",
     "autoVerifiedAttributes": [
       "email"
     ],
