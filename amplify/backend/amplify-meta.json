@@ -23,12 +23,7 @@
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
-          "passwordPolicyCharacters": [
-            "REQUIRES_LOWERCASE",
-            "REQUIRES_NUMBERS",
-            "REQUIRES_SYMBOLS",
-            "REQUIRES_UPPERCASE"
-          ]
+          "passwordPolicyCharacters": []
         },
         "signupAttributes": [],
         "socialProviders": [],
@@ -50,12 +45,12 @@
         "IdentityPoolName": "testAuthIdentityPool__staging",
         "UserPoolName": "MCChatGPT"
       },
-      "lastPushTimeStamp": "2024-04-13T16:48:06.757Z",
+      "lastPushTimeStamp": "2024-04-13T18:09:44.625Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify1265bb8cd5d14-staging-6f754-deployment/amplify-cfn-templates/auth/MCChatGPT-cloudformation-template.json",
         "logicalId": "authMCChatGPT"
       },
-      "lastPushDirHash": "Ebwge53mU4D4hyz6I2OkAexEwQ8="
+      "lastPushDirHash": "3Vko9d3Q72JuYH6d2wd3j06rI7c="
     }
   }
 }
