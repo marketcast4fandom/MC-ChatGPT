@@ -1,14 +1,14 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-amplify1265bb8cd5d14-staging-6f754-authRole",
-      "UnauthRoleArn": "arn:aws:iam::914785610491:role/amplify-amplify1265bb8cd5d14-staging-6f754-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::914785610491:role/amplify-amplify1265bb8cd5d14-staging-6f754-authRole",
+      "AuthRoleName": "amplify-mcchatgpt-dev-8789b-authRole",
+      "UnauthRoleArn": "arn:aws:iam::914785610491:role/amplify-mcchatgpt-dev-8789b-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::914785610491:role/amplify-mcchatgpt-dev-8789b-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-amplify1265bb8cd5d14-staging-6f754-deployment",
-      "UnauthRoleName": "amplify-amplify1265bb8cd5d14-staging-6f754-unauthRole",
-      "StackName": "amplify-amplify1265bb8cd5d14-staging-6f754",
-      "StackId": "arn:aws:cloudformation:us-east-1:914785610491:stack/amplify-amplify1265bb8cd5d14-staging-6f754/bc29c4f0-f8e4-11ee-be61-126f3948e471",
+      "DeploymentBucketName": "amplify-mcchatgpt-dev-8789b-deployment",
+      "UnauthRoleName": "amplify-mcchatgpt-dev-8789b-unauthRole",
+      "StackName": "amplify-mcchatgpt-dev-8789b",
+      "StackId": "arn:aws:cloudformation:us-east-1:914785610491:stack/amplify-mcchatgpt-dev-8789b/32093cf0-f9e4-11ee-93fe-12ba48acb037",
       "AmplifyAppId": "d17zmq9mo5r20y"
     }
   },
@@ -37,20 +37,19 @@
       "providerPlugin": "awscloudformation",
       "service": "Cognito",
       "output": {
-        "UserPoolId": "us-east-1_iAnRkW6tb",
-        "AppClientIDWeb": "1d844ip40jv02jofgn27in1op8",
-        "AppClientID": "4gir9e132savgjlrdae1kvaf2l",
-        "IdentityPoolId": "us-east-1:01271431-521e-4290-bd66-c5cba3275c6e",
-        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:914785610491:userpool/us-east-1_iAnRkW6tb",
-        "IdentityPoolName": "testAuthIdentityPool__staging",
+        "UserPoolId": "us-east-1_pQv7GUwTc",
+        "AppClientIDWeb": "3d7f0mk47l1dpkujat5rja1370",
+        "AppClientID": "4g6jgs329aduh9v4bodciv5mvg",
+        "IdentityPoolId": "us-east-1:d2816bb9-625a-4f53-80f9-ac26c6e1638d",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:914785610491:userpool/us-east-1_pQv7GUwTc",
+        "IdentityPoolName": "testAuthIdentityPool__dev",
         "UserPoolName": "MCChatGPT"
       },
-      "lastPushTimeStamp": "2024-04-13T18:09:44.625Z",
+      "lastPushTimeStamp": "2024-04-13T22:32:38.995Z",
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify1265bb8cd5d14-staging-6f754-deployment/amplify-cfn-templates/auth/MCChatGPT-cloudformation-template.json",
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-mcchatgpt-dev-8789b-deployment/amplify-cfn-templates/auth/MCChatGPT-cloudformation-template.json",
         "logicalId": "authMCChatGPT"
-      },
-      "lastPushDirHash": "3Vko9d3Q72JuYH6d2wd3j06rI7c="
+      }
     }
   }
 }

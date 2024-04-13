@@ -1,8 +1,8 @@
-// import { Amplify } from 'aws-amplify';
-// import { Authenticator } from '@aws-amplify/ui-react';
-// import '@aws-amplify/ui-react/styles.css';
-// import awsExports from './aws-exports';
-// Amplify.configure(awsExports);
+import { Amplify } from 'aws-amplify';
+import { Authenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import awsExports from './aws-exports';
+Amplify.configure(awsExports);
 
 import { Analytics } from "@vercel/analytics/react";
 
@@ -14,25 +14,17 @@ const serverConfig = getServerSideConfig();
 
 export default async function App() {
   return (
-    <>
-      <Home />
-      {serverConfig?.isVercel && (
-        <>
-          <Analytics />
-        </>
-      )}
-    </>
-//     <Authenticator loginMechanisms={['username']}>
-//         {({ signOut, user }) => (
-//             <>
-//               <Home />
-//               {serverConfig?.isVercel && (
-//                 <>
-//                   <Analytics />
-//                 </>
-//               )}
-//             </>
-//         )}
-//     </Authenticator>
+    <Authenticator loginMechanisms={['username']}>
+        {({ signOut, user }) => (
+            <>
+              <Home />
+              {serverConfig?.isVercel && (
+                <>
+                  <Analytics />
+                </>
+              )}
+            </>
+        )}
+    </Authenticator>
   );
 }

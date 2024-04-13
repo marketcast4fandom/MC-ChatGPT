@@ -1,4 +1,22 @@
 {
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mcchatgpt-dev-8789b-authRole",
+      "UnauthRoleArn": "arn:aws:iam::914785610491:role/amplify-mcchatgpt-dev-8789b-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::914785610491:role/amplify-mcchatgpt-dev-8789b-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-mcchatgpt-dev-8789b-deployment",
+      "UnauthRoleName": "amplify-mcchatgpt-dev-8789b-unauthRole",
+      "StackName": "amplify-mcchatgpt-dev-8789b",
+      "StackId": "arn:aws:cloudformation:us-east-1:914785610491:stack/amplify-mcchatgpt-dev-8789b/32093cf0-f9e4-11ee-93fe-12ba48acb037",
+      "AmplifyAppId": "d17zmq9mo5r20y"
+    },
+    "categories": {
+      "auth": {
+        "MCChatGPT": {}
+      }
+    }
+  },
   "staging": {
     "awscloudformation": {
       "AuthRoleName": "amplify-amplify1265bb8cd5d14-staging-6f754-authRole",
