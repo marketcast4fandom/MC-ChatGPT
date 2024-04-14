@@ -16,7 +16,7 @@ const serverConfig = getServerSideConfig();
 
 export default async function App() {
   return (
-    <Authenticator loginMechanisms={['MarketCastOkta']}>
+    <Authenticator>
         {({ signOut, user }) => (
             <>
               <Home />
