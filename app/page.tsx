@@ -16,26 +16,17 @@ const serverConfig = getServerSideConfig();
 
 export default async function App() {
   return (
-    <>
-      <Home />
-      {serverConfig?.isVercel && (
-        <>
-          <Analytics />
-        </>
-      )}
-    </>
-
-//     <Authenticator loginMechanisms={['username']}>
-//         {({ user }) => (
-//             <>
-//               <Home />
-//               {serverConfig?.isVercel && (
-//                 <>
-//                   <Analytics />
-//                 </>
-//               )}
-//             </>
-//         )}
-//     </Authenticator>
+    <Authenticator socialProviders={['MarketCastOkta']}>
+        {({ signOut, user }) => (
+            <>
+              <Home />
+              {serverConfig?.isVercel && (
+                <>
+                  <Analytics />
+                </>
+              )}
+            </>
+        )}
+    </Authenticator>
   );
 }
