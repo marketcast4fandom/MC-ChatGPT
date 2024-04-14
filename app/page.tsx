@@ -16,25 +16,17 @@ const serverConfig = getServerSideConfig();
 
 export default async function App() {
   return (
-    <>
-      <Home />
-      {serverConfig?.isVercel && (
-        <>
-          <Analytics />
-        </>
-      )}
-    </>
-//     <Authenticator>
-//         {({ signOut, user }) => (
-//             <>
-//               <Home />
-//               {serverConfig?.isVercel && (
-//                 <>
-//                   <Analytics />
-//                 </>
-//               )}
-//             </>
-//         )}
-//     </Authenticator>
+    <Authenticator>
+        {({ signOut, user }) => (
+            <>
+              <Home />
+              {serverConfig?.isVercel && (
+                <>
+                  <Analytics />
+                </>
+              )}
+            </>
+        )}
+    </Authenticator>
   );
 }
