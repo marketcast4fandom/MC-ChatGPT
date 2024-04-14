@@ -22,8 +22,8 @@
           "SMS"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 8,
-          "passwordPolicyCharacters": []
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
         },
         "signupAttributes": [],
         "socialProviders": [],
@@ -45,12 +45,12 @@
         "IdentityPoolName": "testAuthIdentityPool__dev",
         "UserPoolName": "MCChatGPT"
       },
-      "lastPushTimeStamp": "2024-04-13T22:27:15.964Z",
+      "lastPushTimeStamp": "2024-04-13T22:35:22.298Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-mcchatgpt-dev-8789b-deployment/amplify-cfn-templates/auth/MCChatGPT-cloudformation-template.json",
         "logicalId": "authMCChatGPT"
       },
-      "lastPushDirHash": "6/zzyvYMMLX6+02o8aMD84+K4bQ="
+      "lastPushDirHash": "3Vko9d3Q72JuYH6d2wd3j06rI7c="
     }
   }
 }

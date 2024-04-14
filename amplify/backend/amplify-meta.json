@@ -45,11 +45,12 @@
         "IdentityPoolName": "testAuthIdentityPool__dev",
         "UserPoolName": "MCChatGPT"
       },
-      "lastPushTimeStamp": "2024-04-13T22:32:38.995Z",
+      "lastPushTimeStamp": "2024-04-13T23:17:11.023Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-mcchatgpt-dev-8789b-deployment/amplify-cfn-templates/auth/MCChatGPT-cloudformation-template.json",
         "logicalId": "authMCChatGPT"
-      }
+      },
+      "lastPushDirHash": "3Vko9d3Q72JuYH6d2wd3j06rI7c="
     }
   }
 }

@@ -32,7 +32,7 @@
   "usernameAttributes": [
     "email"
   ],
-  "useDefault": "manual",
+  "useDefault": "default",
   "userPoolGroups": false,
   "userPoolGroupList": [],
   "adminQueries": false,
@@ -53,6 +53,5 @@
   "breakCircularDependency": true,
   "dependsOn": [],
   "hostedUI": false,
-  "authProviders": [],
-  "thirdPartyAuth": false
+  "authProviders": []
 }

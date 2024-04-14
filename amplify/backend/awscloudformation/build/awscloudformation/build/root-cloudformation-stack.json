@@ -184,7 +184,7 @@
           "authSelections": "identityPoolAndUserPool",
           "serviceName": "Cognito",
           "usernameAttributes": "email",
-          "useDefault": "manual",
+          "useDefault": "default",
           "userPoolGroups": false,
           "userPoolGroupList": "",
           "adminQueries": false,
@@ -206,7 +206,6 @@
           "dependsOn": "",
           "hostedUI": false,
           "authProviders": "",
-          "thirdPartyAuth": false,
           "env": "dev"
         }
       }
