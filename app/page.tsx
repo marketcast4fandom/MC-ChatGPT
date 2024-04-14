@@ -17,7 +17,7 @@ const serverConfig = getServerSideConfig();
 export default async function App() {
   return (
     <Authenticator loginMechanisms={['username']}>
-        {({ signOut, user }) => (
+        {({ user }) => (
             <>
               <Home />
               {serverConfig?.isVercel && (
