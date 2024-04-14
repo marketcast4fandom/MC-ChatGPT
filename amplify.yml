@@ -4,6 +4,7 @@ frontend:
     preBuild:
       commands:
         - yarn install
+        - amplify env checkout $BACKEND_ENV
     build:
       commands:
         - env | grep -e HIDE_USER_API_KEY -e OPENAI_ORG_ID -e OPENAI_API_KEY -e BASE_URL -e DISABLE_GPT4 >> .env.production
