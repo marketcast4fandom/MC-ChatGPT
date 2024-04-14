@@ -155,7 +155,7 @@
     "authMCChatGPT": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-mcchatgpt-dev-8789b-deployment/amplify-cfn-templates/auth/MCChatGPT-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-mcchatgpt-devel-cef85-deployment/amplify-cfn-templates/auth/MCChatGPT-cloudformation-template.json",
         "Parameters": {
           "identityPoolName": "testAuthIdentityPool",
           "allowUnauthenticatedIdentities": false,
@@ -206,7 +206,7 @@
           "dependsOn": "",
           "hostedUI": false,
           "authProviders": "",
-          "env": "dev"
+          "env": "devel"
         }
       }
     },
