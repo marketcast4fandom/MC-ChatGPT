@@ -18,6 +18,9 @@ export default async function App() {
             case "signInWithRedirect":
                 const user = getCurrentUser();
                 console.log(user);
+                return(
+                    <><Home /></>
+                )
                 break;
             case "signInWithRedirect_failure":
                 // handle sign in failure
@@ -30,12 +33,17 @@ export default async function App() {
       }
     });
 
-    signInWithRedirect()
+    const signIn = () => {
+        signInWithRedirect()
+        return(
+            <div />
+        )
+    }
 
     return (
-        <>
-            <Home />
-        </>
+        <div>
+            { signIn() }
+        </div>
     );
 }
 
