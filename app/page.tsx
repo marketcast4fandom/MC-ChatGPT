@@ -31,14 +31,11 @@ export default async function App() {
     });
 
     const openSaml = () => {
-//         if (typeof window !== "undefined") {
-//             window.location.href(url);
-//         }
-        return(
-            <script type="text/javascript">
-                window.location.href(&quot;https://chatmc.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=i72c9bfndnimh63o0nuoalvrq&amp;response_type=code&amp;scope=aws.cognito.signin.user.admin+email+openid+phone+profile&amp;redirect_uri=https%3A%2F%2Fchatgpt-dev.marketcast.ninja%2F&quot;);
-            </script>
-        );
+//         const url: string = 'https://chatmc.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=i72c9bfndnimh63o0nuoalvrq&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https%3A%2F%2Fchatgpt-dev.marketcast.ninja%2F';
+        if (typeof window !== "undefined") {
+            window.open("https://chatmc.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=i72c9bfndnimh63o0nuoalvrq&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https%3A%2F%2Fchatgpt-dev.marketcast.ninja%2F", "_blank");
+        }
+        return(<div />)
     };
 
     return (
