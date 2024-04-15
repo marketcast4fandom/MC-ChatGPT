@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 import { Amplify } from 'aws-amplify';
 import { signInWithRedirect, getCurrentUser, AuthUser } from 'aws-amplify/auth';
 import { Hub } from "aws-amplify/utils";
