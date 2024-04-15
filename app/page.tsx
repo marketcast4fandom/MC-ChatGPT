@@ -35,7 +35,7 @@ export default async function App() {
     }
 
     function handleSignInClick() {
-        signInWithRedirect()
+        signInWithRedirect();
         return(<div />)
     }
 
