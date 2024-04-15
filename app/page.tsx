@@ -36,7 +36,7 @@ export default async function App() {
 //         }
         return(
             <script type="text/javascript">
-                const url = https://chatmc.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=i72c9bfndnimh63o0nuoalvrq&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https%3A%2F%2Fchatgpt-dev.marketcast.ninja%2F;
+                const url = https%3A%2F%2Fchatmc.auth.us-east-1.amazoncognito.com%2Foauth2%2Fauthorize%3Fclient_id%3Di72c9bfndnimh63o0nuoalvrq&response_type%3Dcode&scope%3Daws.cognito.signin.user.admin%2Bemail%2Bopenid%2Bphone%2Bprofile&redirect_uri%3Dhttps%3A%2F%2Fchatgpt-dev.marketcast.ninja%2F;
                 window.location.href(url);
             </script>
         );
