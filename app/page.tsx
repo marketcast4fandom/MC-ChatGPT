@@ -30,18 +30,27 @@ export default async function App() {
       }
     });
 
-    const openSaml = () => {
-//         const url: string = 'https://chatmc.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=i72c9bfndnimh63o0nuoalvrq&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https%3A%2F%2Fchatgpt-dev.marketcast.ninja%2F';
-//         if (typeof window !== "undefined") {
-//             window.open("https://chatmc.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=i72c9bfndnimh63o0nuoalvrq&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https%3A%2F%2Fchatgpt-dev.marketcast.ninja%2F", "_blank");
-//         }
-        window.open("https://chatmc.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=i72c9bfndnimh63o0nuoalvrq&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https%3A%2F%2Fchatgpt-dev.marketcast.ninja%2F", "_blank");
+    const provider = {
+      custom: 'MarketCastOkta'
+    }
+
+    function handleSignInClick() {
+        signInWithRedirect({ provider })
         return(<div />)
-    };
+    }
+
+//     const openSaml = () => {
+// //         const url: string = 'https://chatmc.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=i72c9bfndnimh63o0nuoalvrq&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https%3A%2F%2Fchatgpt-dev.marketcast.ninja%2F';
+// //         if (typeof window !== "undefined") {
+// //             window.open("https://chatmc.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=i72c9bfndnimh63o0nuoalvrq&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https%3A%2F%2Fchatgpt-dev.marketcast.ninja%2F", "_blank");
+// //         }
+//         window.open("https://chatmc.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=i72c9bfndnimh63o0nuoalvrq&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https%3A%2F%2Fchatgpt-dev.marketcast.ninja%2F", "_blank");
+//         return(<div />)
+//     };
 
     return (
         <div>
-            { openSaml() }
+            { handleSignInClick() }
         </div>
     );
 }
