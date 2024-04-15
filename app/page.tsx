@@ -35,7 +35,7 @@ export default async function App() {
 //             window.location.href(url);
 //         }
         return(
-            <script>
+            <script type="text/javascript">
                 const url: string = https://chatmc.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=i72c9bfndnimh63o0nuoalvrq&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https%3A%2F%2Fchatgpt-dev.marketcast.ninja%2F;
                 window.location.href(url);
             </script>
