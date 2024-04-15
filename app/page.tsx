@@ -1,8 +1,5 @@
-'use client'
-// import { useForm } from 'react-hook-form';
-import { Amplify } from 'aws-amplify';
-import { Authenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
+import { useEffect } from 'react';
+import { Amplify, Auth, Hub } from 'aws-amplify';
 import awsExports from '../src/aws-exports';
 Amplify.configure(awsExports);
 
@@ -14,19 +11,36 @@ import { getServerSideConfig } from "./config/server";
 
 const serverConfig = getServerSideConfig();
 
+useEffect(() => {
+    Hub.listen('auth', ({ payload: { event, data } }) => {
+      switch (event) {
+        case 'signIn':
+        case 'cognitoHostedUI':
+          console.log('Authenticated...');
+          console.log(token);
+          break;
+        case 'signIn_failure':
+        case 'cognitoHostedUI_failure':
+          console.log('Error', data);
+          break;
+      }
+    });
+  }, []);
+
 export default async function App() {
   return (
-    <Authenticator>
-        {({ signOut, user }) => (
-            <>
-              <Home />
-              {serverConfig?.isVercel && (
-                <>
-                  <Analytics />
-                </>
-              )}
-            </>
-        )}
-    </Authenticator>
+    <main className="flex-grow pt-8 pb-12 ">
+      <button onClick={() => Auth.federatedSignIn()}>
+        Redirect to Cognito Hosted UI
+      </button>
+    <>
+      <Home />
+      {serverConfig?.isVercel && (
+        <>
+          <Analytics />
+        </>
+      )}
+    </>
   );
 }
+
