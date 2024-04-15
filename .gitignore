@@ -3,6 +3,7 @@
 aws-exports.js
 metadata.xml
 package-lock.json
+amplify/
 
 # dependencies
 /node_modules
