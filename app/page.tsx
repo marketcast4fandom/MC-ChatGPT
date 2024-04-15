@@ -2,7 +2,7 @@
 import { Amplify } from 'aws-amplify';
 import { signInWithRedirect, getCurrentUser, AuthUser } from 'aws-amplify/auth';
 import { Hub } from "aws-amplify/utils";
-import awsExports from '../app/aws-exports';
+import awsExports from '../src/aws-exports';
 
 import {
   fetchAuthSession,
