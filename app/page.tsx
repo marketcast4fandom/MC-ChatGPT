@@ -13,11 +13,29 @@ const serverConfig = getServerSideConfig();
 
 export default async function App() {
 
+    Hub.listen("auth", ({ payload }) => {
+        switch (payload.event) {
+            case "signInWithRedirect":
+                const user = getCurrentUser();
+                console.log(user);
+                break;
+            case "signInWithRedirect_failure":
+                // handle sign in failure
+                console.log(payload.event);
+                break;
+            case "customOAuthState":
+                const state = payload.data; // this will be customState provided on signInWithRedirect function
+                console.log(state);
+                break;
+      }
+    });
 
-  return (
-    <>
-      <Home />
-    </>
-  );
+    signInWithRedirect()
+
+    return (
+        <>
+            <Home />
+        </>
+    );
 }
 
