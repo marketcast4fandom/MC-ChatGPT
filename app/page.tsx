@@ -70,11 +70,13 @@ export default async function App() {
     });
 
     function handleSignIn() {
+        console.log('pre signInWithRedirect');
         signInWithRedirect({
             provider: {
                 custom: "MarketCastOkta"
             },
         });
+        console.log('post signInWithRedirect');
         return(<></>)
     }
 
