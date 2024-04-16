@@ -26,24 +26,48 @@ import { Home } from "./components/home";
 //
 export default async function App() {
 
-    Hub.listen("auth", ({ payload }) => {
-        switch (payload.event) {
-            case "signInWithRedirect":
-                console.log("signInWithRedirect");
-                return(
-                    <><Home /></>
-                )
-            case "signInWithRedirect_failure":
-                // handle sign in failure
-                console.log(payload.event);
-                break;
-            case "customOAuthState":
-                const state = payload.data; // this will be customState provided on signInWithRedirect function
-                console.log(state);
-                break;
+    // Hub.listen("auth", ({ payload }) => {
+    //     switch (payload.event) {
+    //         case "signInWithRedirect":
+    //             console.log("signInWithRedirect");
+    //             return(
+    //                 <><Home /></>
+    //             )
+    //         case "signInWithRedirect_failure":
+    //             // handle sign in failure
+    //             console.log(payload.event);
+    //             break;
+    //         case "customOAuthState":
+    //             const state = payload.data; // this will be customState provided on signInWithRedirect function
+    //             console.log(state);
+    //             break;
+    //   }
+    // });
+    Hub.listen('auth', ({ payload }) => {
+      switch (payload.event) {
+        case 'signedIn':
+          console.log('user have been signedIn successfully.');
+          break;
+        case 'signedOut':
+          console.log('user have been signedOut successfully.');
+          break;
+        case 'tokenRefresh':
+          console.log('auth tokens have been refreshed.');
+          break;
+        case 'tokenRefresh_failure':
+          console.log('failure while refreshing auth tokens.');
+          break;
+        case 'signInWithRedirect':
+          console.log('signInWithRedirect API has successfully been resolved.');
+          break;
+        case 'signInWithRedirect_failure':
+          console.log('failure while trying to resolve signInWithRedirect API.');
+          break;
+        case 'customOAuthState':
+          console.log('custom state returned from CognitoHosted UI');
+          break;
       }
     });
-
 
     function handleSignIn() {
         signInWithRedirect({
