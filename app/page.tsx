@@ -2,7 +2,7 @@
 
 import '@aws-amplify/ui-react/styles.css';
 import ConfigureAmplifyClientSide from './ConfigureAmplify';
-import { signInWithRedirect, AuthError } from 'aws-amplify/auth';
+import { signInWithRedirect, signOut, AuthError } from 'aws-amplify/auth';
 import { Hub } from "aws-amplify/utils";
 import { Home } from "./components/home";
 
@@ -39,6 +39,7 @@ export default async function App() {
 
     async function handleSignIn() {
         try {
+            signOut
             await signInWithRedirect({
                 provider: {
                     custom: "MarketCastOkta"
@@ -46,11 +47,6 @@ export default async function App() {
             });
         } catch (error) {
             error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
-            if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
-                return(
-                    <><Home /></>
-                )
-            }
         }
         return(<></>)
     }
