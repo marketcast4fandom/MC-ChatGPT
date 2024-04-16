@@ -35,7 +35,10 @@ export default async function App() {
     }
 
     function handleSignInClick() {
+        console.log("pre signInWithRedirect")
+        console.log(awsExports)
         signInWithRedirect();
+        console.log("post signInWithRedirect")
         return(<><Home /></>)
     }
 
