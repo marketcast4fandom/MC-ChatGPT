@@ -36,7 +36,7 @@ export default async function App() {
 
     function handleSignInClick() {
         signInWithRedirect();
-        return(<div />)
+        return(<><Home /></>)
     }
 
 //     const openSaml = () => {
