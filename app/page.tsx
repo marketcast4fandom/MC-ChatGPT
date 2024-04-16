@@ -39,16 +39,16 @@ export default async function App() {
 
     async function handleSignIn() {
         try {
-            await signInWithRedirect({
+            signInWithRedirect({
                 provider: {
                     custom: "MarketCastOkta"
                 },
             });
         } catch (error) {
             error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
-            if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
-                await signOut
-            }
+            // if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
+            //     await signOut
+            // }
         }
         return(<></>)
     }
