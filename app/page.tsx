@@ -46,8 +46,11 @@ export default async function App() {
             });
         } catch (error) {
             error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
-            // if (error.name === 'UserAlreadyAuthenticatedException') {
-            // }
+            if (error.name === 'UserAlreadyAuthenticatedException') {
+                return(
+                    <><Home /></>
+                )
+            }
         }
         return(<></>)
     }
