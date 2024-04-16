@@ -46,7 +46,7 @@ export default async function App() {
             });
         } catch (error) {
             error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
-            if (error.name === 'UserAlreadyAuthenticatedException') {
+            if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
                 return(
                     <><Home /></>
                 )
