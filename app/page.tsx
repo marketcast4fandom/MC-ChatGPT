@@ -50,9 +50,6 @@ export default async function App() {
             provider: {
                 custom: "MarketCastOkta"
             },
-            options: {
-                preferPrivateSession: true,
-            },
         });
         return(<></>)
     }
