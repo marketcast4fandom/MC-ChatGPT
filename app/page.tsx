@@ -11,7 +11,7 @@ export default async function App() {
     const home_page = (<><Home/></>)
     const error_page = (<>Site Unavailable</>)
 
-    async function isAuthenticatedUser() {
+    const isAuthUser = async () => {
         try {
             const { username, userId } = await getCurrentUser();
             console.log(`username: ${username}`);
@@ -57,23 +57,23 @@ export default async function App() {
     //     });
     // });
 
-    async function handleSignIn() {
-        let page = error_page
-        if  (!await isAuthenticatedUser()) {
+    const handleSignIn = async () => {
+        const userAuth = await isAuthUser()
+        if  (!userAuth) {
             try {
                 await signInWithRedirect({
                     provider: {
                         custom: "MarketCastOkta"
                     },
                 });
-                // return(home_page)
+                return home_page
             } catch (error) {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
             }
         } else {
-            page = home_page
+            return home_page
         }
-        return(page)
+        return error_page
     }
 
     return (
