@@ -9,7 +9,7 @@ import { Home } from "./components/home";
 export default async function App() {
 
     const home_page = (<><Home/></>)
-    const error_page = (<></>)
+    const error_page = (<>Site Unavailable</>)
 
     const [page, setPage] = useState(error_page);
 
@@ -45,7 +45,7 @@ export default async function App() {
                     break;
             }
         });
-    }, []);
+    });
 
     async function handleSignIn() {
         try {
@@ -57,9 +57,9 @@ export default async function App() {
         } catch (error) {
             error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
             if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
-            //     setPage(home_page)
-            // } else {
-            //     setPage(error_page)
+                setPage(home_page)
+            } else {
+                // setPage(error_page)
             }
         }
         return(page)
