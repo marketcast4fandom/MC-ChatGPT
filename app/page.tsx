@@ -58,7 +58,9 @@ export default async function App() {
     }
 
     const signInUser = async (isAuthUser: boolean) => {
-        if  (!isAuthUser) {
+        if  (isAuthUser) {
+            return true
+        } else {
             try {
                 await signInWithRedirect({
                     provider: {
@@ -69,8 +71,8 @@ export default async function App() {
             } catch (error) {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
             }
+            return false
         }
-        return false
     }
 
     const handleSignIn = async () => {
