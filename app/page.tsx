@@ -17,7 +17,7 @@ export default async function App() {
     const [page, setPage] = useState(error_page);
 
     useEffect(() => {
-        return Hub.listen('auth', ({ payload }) => {
+        Hub.listen('auth', ({ payload }) => {
             switch (payload.event) {
                 case 'signedIn':
                     console.log('user have been signedIn successfully.');
@@ -71,7 +71,7 @@ export default async function App() {
     return (
         <>
             <ConfigureAmplifyClientSide />
-            {/*{ await handleSignIn() }*/}
+            { await handleSignIn() }
         </>
         // <main className="flex min-h-screen flex-col items-center justify-between p-24">
         //   <ConfigureAmplifyClientSide />
