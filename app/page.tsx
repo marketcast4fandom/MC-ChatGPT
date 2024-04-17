@@ -88,7 +88,7 @@ export default async function App() {
     }
 
     return (
-        <>{ await handleSignIn() }</>
+        await handleSignIn()
     );
 }
 

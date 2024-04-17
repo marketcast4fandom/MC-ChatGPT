@@ -6,4 +6,4 @@ export default function ConfigureAmplifyClientSide() {
   return null;
 }
 
-// Amplify.configure(awsExports);
+Amplify.configure(awsExports);
