@@ -11,7 +11,7 @@ export default async function App() {
     const home_page = (<><Home/></>)
     const error_page = (<></>)
 
-    const [page, setPage] = useState(error_page);
+    const [page, setPage] = useState(home_page);
 
     useEffect(() => {
         Hub.listen('auth', ({ payload }) => {
@@ -60,21 +60,20 @@ export default async function App() {
         //         setPage(home_page)
         //     }
         // }
-        // return(page)
-        return(home_page)
+        return(page)
     }
 
     return (
 
-        <>
-            <ConfigureAmplifyClientSide />
-            { home_page }
-        </>
-
         // <>
         //     <ConfigureAmplifyClientSide />
-        //     { await handleSignIn() }
+        //     { home_page }
         // </>
+
+        <>
+            <ConfigureAmplifyClientSide />
+            { await handleSignIn() }
+        </>
 
         // <main className="flex min-h-screen flex-col items-center justify-between p-24">
         //   <ConfigureAmplifyClientSide />
