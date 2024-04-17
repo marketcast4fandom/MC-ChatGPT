@@ -15,8 +15,7 @@ export default async function App() {
     async function isAuthenticatedUser() {
         try {
             const { username, userId } = await getCurrentUser();
-            console.log(`The username: ${username}`);
-            console.log(`The userId: ${userId}`);
+            console.log(`username: ${username}`);
             return true
         } catch (error) {
             error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
@@ -67,14 +66,12 @@ export default async function App() {
                         custom: "MarketCastOkta"
                     },
                 });
+                setPage(home_page)
             } catch (error) {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
-                // if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
-                //     setPage(home_page)
-                // } else {
-                //     setPage(error_page)
-                // }
             }
+        } else {
+            setPage(home_page)
         }
         return (page)
     }
