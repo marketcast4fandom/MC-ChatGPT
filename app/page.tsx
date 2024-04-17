@@ -37,9 +37,9 @@ export default async function App() {
       }
     });
 
-    async function handleSignIn() {
+    function handleSignIn() {
         try {
-            await signInWithRedirect({
+            signInWithRedirect({
                 provider: {
                     custom: "MarketCastOkta"
                 },
