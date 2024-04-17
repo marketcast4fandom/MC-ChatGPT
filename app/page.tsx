@@ -45,9 +45,9 @@ export default async function App() {
         }
     });
 
-    async function handleSignIn() {
+    function handleSignIn() {
         try {
-            await signInWithRedirect({
+            signInWithRedirect({
                 provider: {
                     custom: "MarketCastOkta"
                 },
@@ -66,7 +66,7 @@ export default async function App() {
     return (
         <>
             <ConfigureAmplifyClientSide />
-            { await handleSignIn() }
+            { handleSignIn() }
         </>
     );
 }
