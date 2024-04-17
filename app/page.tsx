@@ -71,7 +71,7 @@ export default async function App() {
     return (
         <>
             <ConfigureAmplifyClientSide />
-            { await handleSignIn() }
+            {/*{ await handleSignIn() }*/}
         </>
         // <main className="flex min-h-screen flex-col items-center justify-between p-24">
         //   <ConfigureAmplifyClientSide />
