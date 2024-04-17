@@ -10,13 +10,11 @@ export default async function App() {
 
     const home_page = (<><Home/></>)
     const error_page = (<>Site Unavailable</>)
-    const [page, setPage] = useState(error_page);
 
     async function isAuthenticatedUser() {
         try {
             const { username, userId } = await getCurrentUser();
             console.log(`username: ${username}`);
-            setPage(home_page)
             return true
         } catch (error) {
             error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
@@ -67,11 +65,14 @@ export default async function App() {
                         custom: "MarketCastOkta"
                     },
                 });
+                return home_page
             } catch (error) {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
             }
+        } else {
+            return home_page
         }
-        return (page)
+        return error_page
     }
 
     return (
