@@ -7,10 +7,10 @@ import { Home } from "./components/home";
 
 export default async function App() {
 
-    const home_page = (<><ConfigureAmplifyClientSide /><Home/></>);
-    const error_page = (<><ConfigureAmplifyClientSide />Site Unavailable</>);
-    const test_page_1 = (<><ConfigureAmplifyClientSide />Test Page 1</>);
-    const test_page_2 = (<><ConfigureAmplifyClientSide />Test Page 2</>);
+    const home_page = (<div><ConfigureAmplifyClientSide /><Home/></div>);
+    const error_page = (<div><ConfigureAmplifyClientSide />Site Unavailable</div>);
+    const test_page_1 = (<div><ConfigureAmplifyClientSide />Test Page 1</div>);
+    const test_page_2 = (<div><ConfigureAmplifyClientSide />Test Page 2</div>);
 
     // useEffect(() => {
     //     Hub.listen('auth', ({ payload }) => {
@@ -86,9 +86,11 @@ export default async function App() {
         console.log(`signedIn: ${signedIn}`);
         if (signedIn) {
             // return home_page;
+            console.log(`signedIn: test_page_2`);
             return test_page_2;
         }
         // return error_page;
+        console.log(`signedIn: test_page_1`);
         return test_page_1;
     }
 
