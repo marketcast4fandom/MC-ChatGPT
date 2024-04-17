@@ -11,7 +11,7 @@ export default async function App() {
     const home_page = (<><Home/></>)
     const error_page = (<></>)
 
-    const [page, setPage] = useState(home_page);
+    const [page, setPage] = useState(error_page);
 
     useEffect(() => {
         Hub.listen('auth', ({ payload }) => {
@@ -48,37 +48,28 @@ export default async function App() {
     }, []);
 
     async function handleSignIn() {
-        // try {
-        //     await signInWithRedirect({
-        //         provider: {
-        //             custom: "MarketCastOkta"
-        //         },
-        //     });
-        // } catch (error) {
-        //     error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
-        //     if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
-        //         setPage(home_page)
-        //     }
-        // }
+        try {
+            await signInWithRedirect({
+                provider: {
+                    custom: "MarketCastOkta"
+                },
+            });
+        } catch (error) {
+            error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
+            if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
+                setPage(home_page)
+            } else {
+                setPage(error_page)
+            }
+        }
         return(page)
     }
 
     return (
-
-        // <>
-        //     <ConfigureAmplifyClientSide />
-        //     { home_page }
-        // </>
-
         <>
             <ConfigureAmplifyClientSide />
             { await handleSignIn() }
         </>
-
-        // <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        //   <ConfigureAmplifyClientSide />
-        //   <button onClick={handleSignIn}>Sign in with Okta</button>
-        // </main>
     );
 }
 
