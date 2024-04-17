@@ -11,17 +11,6 @@ export default async function App() {
     const home_page = (<><Home/></>)
     const error_page = (<>Site Unavailable</>)
 
-    const isAuthUser = async () => {
-        try {
-            const { username, userId } = await getCurrentUser();
-            console.log(`username: ${username}`);
-            return true
-        } catch (error) {
-            error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
-        }
-        return false
-    }
-
     // useEffect(() => {
     //     Hub.listen('auth', ({ payload }) => {
     //         console.log(payload.event)
@@ -57,23 +46,41 @@ export default async function App() {
     //     });
     // });
 
-    const handleSignIn = async () => {
-        const userAuth = await isAuthUser()
-        if  (!userAuth) {
+    const isAuthUser = async () => {
+        try {
+            const { username, userId } = await getCurrentUser();
+            console.log(`username: ${username}`);
+            return true
+        } catch (error) {
+            error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
+        }
+        return false
+    }
+
+    const signInUser = async (isAuthUser: boolean) => {
+        if  (!isAuthUser) {
             try {
                 await signInWithRedirect({
                     provider: {
                         custom: "MarketCastOkta"
                     },
                 });
-                return home_page
+                return true
             } catch (error) {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
             }
-        } else {
-            return home_page
         }
-        return error_page
+        return false
+    }
+
+    const handleSignIn = async () => {
+        const userAuth = await isAuthUser()
+        const signedIn = await signInUser(userAuth)
+        if (signedIn) {
+            return home_page
+        } else {
+            return error_page
+        }
     }
 
     return (
