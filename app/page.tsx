@@ -6,7 +6,7 @@ import { signInWithRedirect, AuthError, signOut, getCurrentUser } from 'aws-ampl
 import { Hub } from "aws-amplify/utils";
 import { Home } from "./components/home";
 
-export default async function App() {
+export async function App() {
 
     const home_page = (<><Home/></>);
     const error_page = (<>Site Unavailable</>);
