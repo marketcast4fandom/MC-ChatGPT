@@ -8,12 +8,9 @@ import { Home } from "./components/home";
 
 export default async function App() {
 
-    const home_page = () => {
-      return (<><Home/></>)
-    }
-    const error_page = () => {
-      return (<></>)
-    }
+    const home_page = (<><Home/></>)
+    const error_page = (<></>)
+
     const [page, setPage] = useState(error_page);
 
     useEffect(() => {
@@ -68,7 +65,7 @@ export default async function App() {
     }
 
     return (
-        <><Home/></>
+        home_page
 
         // <>
         //     <ConfigureAmplifyClientSide />
