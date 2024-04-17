@@ -19,8 +19,8 @@ export default async function App() {
             console.log(`The userId: ${userId}`);
             return true
         } catch (error) {
-            error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
             if (error instanceof AuthError && error.name === 'UserUnAuthenticatedException') {
+                console.log(error.name, error.message, error.recoverySuggestion)
             }
         }
         return false
