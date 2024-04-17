@@ -58,6 +58,7 @@ export default async function App() {
     // });
 
     async function handleSignIn() {
+        let page = error_page
         if  (!await isAuthenticatedUser()) {
             try {
                 await signInWithRedirect({
@@ -70,9 +71,9 @@ export default async function App() {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
             }
         } else {
-            return(home_page)
+            page = home_page
         }
-        // return(home_page)
+        return(page)
     }
 
     return (
