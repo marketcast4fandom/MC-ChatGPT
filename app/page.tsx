@@ -88,7 +88,7 @@ export default async function App() {
     return (
         <>
             <ConfigureAmplifyClientSide />
-            { await handleSignIn() }
+            { handleSignIn }
         </>
     );
 }
