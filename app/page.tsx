@@ -61,8 +61,6 @@ export default async function App() {
             error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
             if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
                 setPage(home_page)
-            } else {
-                setPage(error_page)
             }
         }
         return(page)
