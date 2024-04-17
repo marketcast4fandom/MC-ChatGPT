@@ -10,12 +10,13 @@ export default async function App() {
 
     const home_page = (<><Home/></>)
     const error_page = (<>Site Unavailable</>)
-    let page = error_page;
+    const [page, setPage] = useState(error_page);
 
     async function isAuthenticatedUser() {
         try {
             const { username, userId } = await getCurrentUser();
             console.log(`username: ${username}`);
+            setPage(home_page)
             return true
         } catch (error) {
             error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
@@ -29,27 +30,27 @@ export default async function App() {
             switch (payload.event) {
                 case 'signedIn':
                     console.log('user have been signedIn successfully.');
-                    page = home_page
+                    setPage(home_page)
                     break;
                 case 'signedOut':
                     console.log('user have been signedOut successfully.');
-                    page = error_page
+                    setPage(error_page)
                     break;
                 case 'tokenRefresh':
                     console.log('auth tokens have been refreshed.');
-                    page = home_page
+                    setPage(home_page)
                     break;
                 case 'tokenRefresh_failure':
                     console.log('failure while refreshing auth tokens.');
-                    page = error_page
+                    setPage(error_page)
                     break;
                 case 'signInWithRedirect':
                     console.log('signInWithRedirect API has successfully been resolved.');
-                    page = home_page
+                    setPage(home_page)
                     break;
                 case 'signInWithRedirect_failure':
                     console.log('failure while trying to resolve signInWithRedirect API.');
-                    page = error_page
+                    setPage(error_page)
                     break;
                 case 'customOAuthState':
                     console.log('custom state returned from CognitoHosted UI');
@@ -69,8 +70,6 @@ export default async function App() {
             } catch (error) {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
             }
-        } else {
-            page = home_page
         }
         return (page)
     }
