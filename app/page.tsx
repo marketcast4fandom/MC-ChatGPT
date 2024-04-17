@@ -45,7 +45,7 @@ export default async function App() {
                     break;
             }
         });
-    }, []);
+    });
 
     async function handleSignIn() {
         try {
@@ -68,6 +68,7 @@ export default async function App() {
     return (
         <>
             <ConfigureAmplifyClientSide />
+            { await signOut() }
             { await handleSignIn() }
         </>
     );
