@@ -8,8 +8,8 @@ import { Home } from "./components/home";
 
 export default async function App() {
 
-    const home_page = (<><Home/></>)
-    const error_page = (<>Site Unavailable</>)
+    const home_page = (<><Home/></>);
+    const error_page = (<>Site Unavailable</>);
 
     // useEffect(() => {
     //     Hub.listen('auth', ({ payload }) => {
