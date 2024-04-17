@@ -14,6 +14,7 @@ export default async function App() {
     let [page, setPage] = useState(error_page);
 
     Hub.listen('auth', ({ payload }) => {
+        console.log(payload.event)
         switch (payload.event) {
             case 'signedIn':
                 console.log('user have been signedIn successfully.');
@@ -54,11 +55,11 @@ export default async function App() {
             });
         } catch (error) {
             error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
-            if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
-                setPage(home_page)
-            } else {
-                setPage(error_page)
-            }
+            // if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
+            //     setPage(home_page)
+            // } else {
+            //     setPage(error_page)
+            // }
         }
         return(page)
     }
