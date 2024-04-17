@@ -1,3 +1,4 @@
+'use client';
 import '@aws-amplify/ui-react/styles.css';
 import ConfigureAmplifyClientSide from './ConfigureAmplify';
 import { signInWithRedirect, AuthError, signOut, getCurrentUser } from 'aws-amplify/auth';
@@ -8,6 +9,8 @@ export default async function App() {
 
     const home_page = (<><ConfigureAmplifyClientSide /><Home/></>);
     const error_page = (<><ConfigureAmplifyClientSide />Site Unavailable</>);
+    const test_page_1 = (<><ConfigureAmplifyClientSide />Test Page 1</>);
+    const test_page_2 = (<><ConfigureAmplifyClientSide />Test Page 2</>);
 
     // useEffect(() => {
     //     Hub.listen('auth', ({ payload }) => {
@@ -77,9 +80,11 @@ export default async function App() {
         const userAuth = await isAuthUser();
         const signedIn = await signInUser(userAuth);
         if (signedIn) {
-            return home_page;
+            // return home_page;
+            return test_page_2;
         }
-        return error_page;
+        // return error_page;
+        return test_page_1;
     }
 
     return (
