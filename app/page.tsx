@@ -60,6 +60,7 @@ export default async function App() {
 
     const signInUser = async (isAuthUser: boolean) => {
         if  (isAuthUser) {
+            console.log(`signInUser 1: ${isAuthUser}`);
             return true;
         } else {
             try {
@@ -68,17 +69,21 @@ export default async function App() {
                         custom: "MarketCastOkta"
                     },
                 });
+                console.log(`signInUser 2`);
                 return true;
             } catch (error) {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion);
             }
+            console.log(`signInUser 3`);
             return false;
         }
     }
 
     const handleSignIn = async () => {
         const userAuth = await isAuthUser();
+        console.log(`userAuth: ${userAuth}`);
         const signedIn = await signInUser(userAuth);
+        console.log(`signedIn: ${signedIn}`);
         if (signedIn) {
             // return home_page;
             return test_page_2;
