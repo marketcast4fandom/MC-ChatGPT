@@ -50,16 +50,16 @@ export default async function App() {
         try {
             const { username, userId } = await getCurrentUser();
             console.log(`username: ${username}`);
-            return true
+            return true;
         } catch (error) {
-            error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
+            error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion);
         }
-        return false
+        return false;
     }
 
     const signInUser = async (isAuthUser: boolean) => {
         if  (isAuthUser) {
-            return true
+            return true;
         } else {
             try {
                 await signInWithRedirect({
@@ -67,28 +67,28 @@ export default async function App() {
                         custom: "MarketCastOkta"
                     },
                 });
-                return true
+                return true;
             } catch (error) {
-                error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
+                error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion);
             }
-            return false
+            return false;
         }
     }
 
     const handleSignIn = async () => {
-        const userAuth = await isAuthUser()
-        const signedIn = await signInUser(userAuth)
+        const userAuth = await isAuthUser();
+        const signedIn = await signInUser(userAuth);
         if (signedIn) {
-            return home_page
+            return home_page;
         } else {
-            return error_page
+            return error_page;
         }
     }
 
     return (
         <>
             <ConfigureAmplifyClientSide />
-            { handleSignIn }
+            { await handleSignIn() }
         </>
     );
 }
