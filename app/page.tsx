@@ -31,8 +31,7 @@ export default async function App() {
           break;
         case 'signInWithRedirect':
           console.log('signInWithRedirect API has successfully been resolved.');
-            return(home_page)
-          // break;
+          break;
         case 'signInWithRedirect_failure':
           console.log('failure while trying to resolve signInWithRedirect API.');
           break;
@@ -49,6 +48,7 @@ export default async function App() {
                     custom: "MarketCastOkta"
                 },
             });
+            return(home_page)
         } catch (error) {
             error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
             if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
