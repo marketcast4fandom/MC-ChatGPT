@@ -6,10 +6,10 @@ import { signInWithRedirect, AuthError, signOut, getCurrentUser } from 'aws-ampl
 import { Hub } from "aws-amplify/utils";
 import { Home } from "./components/home";
 
-export async function App() {
+export default async function App() {
 
-    const home_page = (<><Home/></>);
-    const error_page = (<>Site Unavailable</>);
+    const home_page = (<><ConfigureAmplifyClientSide /><Home/></>);
+    const error_page = (<><ConfigureAmplifyClientSide />Site Unavailable</>);
 
     // useEffect(() => {
     //     Hub.listen('auth', ({ payload }) => {
@@ -85,10 +85,7 @@ export async function App() {
     }
 
     return (
-        <>
-            <ConfigureAmplifyClientSide />
-            { await handleSignIn() }
-        </>
+        <>{ await handleSignIn() }</>
     );
 }
 
