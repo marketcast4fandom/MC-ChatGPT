@@ -51,19 +51,20 @@ export default async function App() {
     }, []);
 
     async function handleSignIn() {
-        try {
-            await signInWithRedirect({
-                provider: {
-                    custom: "MarketCastOkta"
-                },
-            });
-        } catch (error) {
-            error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
-            if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
-                setPage(home_page)
-            }
-        }
-        return(page)
+        // try {
+        //     await signInWithRedirect({
+        //         provider: {
+        //             custom: "MarketCastOkta"
+        //         },
+        //     });
+        // } catch (error) {
+        //     error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
+        //     if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
+        //         setPage(home_page)
+        //     }
+        // }
+        // return(page)
+        return(home_page)
     }
 
     return (
