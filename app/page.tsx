@@ -11,7 +11,7 @@ export default async function App() {
     const home_page = (<><Home/></>)
     const error_page = (<>Site Unavailable</>)
 
-    const [page, setPage] = useState(error_page);
+    let [page, setPage] = useState(error_page);
 
     Hub.listen('auth', ({ payload }) => {
         switch (payload.event) {
@@ -45,9 +45,9 @@ export default async function App() {
         }
     });
 
-    function handleSignIn() {
+    async function handleSignIn() {
         try {
-            signInWithRedirect({
+            await signInWithRedirect({
                 provider: {
                     custom: "MarketCastOkta"
                 },
@@ -66,7 +66,7 @@ export default async function App() {
     return (
         <>
             <ConfigureAmplifyClientSide />
-            { handleSignIn() }
+            { await handleSignIn() }
         </>
     );
 }
