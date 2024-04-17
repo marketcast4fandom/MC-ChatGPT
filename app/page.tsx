@@ -12,16 +12,14 @@ export default async function App() {
     const error_page = (<>Site Unavailable</>)
     const [page, setPage] = useState(error_page);
 
-    async function currentAuthenticatedUser() {
+    async function isAuthenticatedUser() {
         try {
             const { username, userId } = await getCurrentUser();
             console.log(`The username: ${username}`);
             console.log(`The userId: ${userId}`);
             return true
         } catch (error) {
-            if (error instanceof AuthError && error.name === 'UserUnAuthenticatedException') {
-                console.log(error.name, error.message, error.recoverySuggestion)
-            }
+            error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
         }
         return false
     }
@@ -62,7 +60,7 @@ export default async function App() {
     });
 
     async function handleSignIn() {
-        if (await currentAuthenticatedUser()) {
+        if  (!await isAuthenticatedUser()) {
             try {
                 await signInWithRedirect({
                     provider: {
