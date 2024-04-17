@@ -77,12 +77,12 @@ export default async function App() {
 
     const handleSignIn = async () => {
         const userAuth = await isAuthUser();
-        // const signedIn = await signInUser(userAuth);
-        // if (signedIn) {
+        const signedIn = await signInUser(userAuth);
+        if (signedIn) {
         //     return home_page;
-        // } else {
+        } else {
         //     return error_page;
-        // }
+        }
         return home_page;
     }
 
