@@ -17,9 +17,13 @@ export default async function App() {
             const { username, userId } = await getCurrentUser();
             console.log(`The username: ${username}`);
             console.log(`The userId: ${userId}`);
-        } catch (err) {
-            console.log(err);
+            return true
+        } catch (error) {
+            error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
+            if (error instanceof AuthError && error.name === 'UserUnAuthenticatedException') {
+            }
         }
+        return false
     }
 
     useEffect(() => {
@@ -58,22 +62,23 @@ export default async function App() {
     });
 
     async function handleSignIn() {
-        await currentAuthenticatedUser()
-        try {
-            await signInWithRedirect({
-                provider: {
-                    custom: "MarketCastOkta"
-                },
-            });
-        } catch (error) {
-            error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
-            // if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
-            //     setPage(home_page)
-            // } else {
-            //     setPage(error_page)
-            // }
+        if (await currentAuthenticatedUser()) {
+            try {
+                await signInWithRedirect({
+                    provider: {
+                        custom: "MarketCastOkta"
+                    },
+                });
+            } catch (error) {
+                error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
+                // if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
+                //     setPage(home_page)
+                // } else {
+                //     setPage(error_page)
+                // }
+            }
         }
-        return(page)
+        return (page)
     }
 
     return (
