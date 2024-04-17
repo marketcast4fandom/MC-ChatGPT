@@ -70,9 +70,9 @@ export default async function App() {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
             }
         } else {
-            // return(home_page)
+            return(home_page)
         }
-        return(home_page)
+        // return(home_page)
     }
 
     return (
