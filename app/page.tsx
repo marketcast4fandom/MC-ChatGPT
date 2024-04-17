@@ -68,7 +68,7 @@ export default async function App() {
     }
 
     return (
-        home_page
+        <><Home/></>
 
         // <>
         //     <ConfigureAmplifyClientSide />
