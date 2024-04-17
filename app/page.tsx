@@ -8,6 +8,13 @@ import { Home } from "./components/home";
 
 export default async function App() {
 
+    const home_page = () => {
+      return (<><Home/></>)
+    }
+    const no_page = () => {
+      return (<></>)
+    }
+
     Hub.listen('auth', ({ payload }) => {
       switch (payload.event) {
         case 'signedIn':
@@ -24,9 +31,7 @@ export default async function App() {
           break;
         case 'signInWithRedirect':
           console.log('signInWithRedirect API has successfully been resolved.');
-            return(
-                <><Home /></>
-            )
+            return(home_page)
           // break;
         case 'signInWithRedirect_failure':
           console.log('failure while trying to resolve signInWithRedirect API.');
@@ -38,7 +43,6 @@ export default async function App() {
     });
 
     async function handleSignIn() {
-        let ret_val = '<></>'
         try {
             await signInWithRedirect({
                 provider: {
@@ -48,16 +52,16 @@ export default async function App() {
         } catch (error) {
             error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
             if (error instanceof AuthError && error.name === 'UserAlreadyAuthenticatedException') {
-                ret_val = '<><Home/></>'
+                return(home_page)
             }
         }
-        return(ret_val)
+        return(no_page)
     }
 
     return (
         <>
             <ConfigureAmplifyClientSide />
-            { handleSignIn() }
+            { await handleSignIn() }
         </>
         // <main className="flex min-h-screen flex-col items-center justify-between p-24">
         //   <ConfigureAmplifyClientSide />
