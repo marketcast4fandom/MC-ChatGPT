@@ -12,6 +12,16 @@ export default async function App() {
     const error_page = (<>Site Unavailable</>)
     const [page, setPage] = useState(error_page);
 
+    async function currentAuthenticatedUser() {
+        try {
+            const { username, userId } = await getCurrentUser();
+            console.log(`The username: ${username}`);
+            console.log(`The userId: ${userId}`);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     useEffect(() => {
         Hub.listen('auth', ({ payload }) => {
             console.log(payload.event)
@@ -48,6 +58,7 @@ export default async function App() {
     });
 
     async function handleSignIn() {
+        await currentAuthenticatedUser()
         try {
             await signInWithRedirect({
                 provider: {
@@ -68,7 +79,6 @@ export default async function App() {
     return (
         <>
             <ConfigureAmplifyClientSide />
-            { await signOut() }
             { await handleSignIn() }
         </>
     );
