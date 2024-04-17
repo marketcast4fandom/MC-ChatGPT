@@ -95,7 +95,7 @@ export default async function App() {
     }
 
     return (
-        await handleSignIn()
+        <div> { await handleSignIn() } </div>
     );
 }
 
