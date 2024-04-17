@@ -1,12 +1,16 @@
 'use client';
-
+import React, { useEffect, useState } from "react";
 import '@aws-amplify/ui-react/styles.css';
 import ConfigureAmplifyClientSide from './ConfigureAmplify';
-import { signInWithRedirect, AuthError } from 'aws-amplify/auth';
+import { signInWithRedirect, AuthError, signOut, getCurrentUser } from 'aws-amplify/auth';
 import { Hub } from "aws-amplify/utils";
 import { Home } from "./components/home";
 
 export default async function App() {
+
+    const [user, setUser] = useState(null);
+    const [error, setError] = useState(null);
+    const [customState, setCustomState] = useState(null);
 
     const home_page = () => {
       return (<><Home/></>)
@@ -15,31 +19,33 @@ export default async function App() {
       return (<></>)
     }
 
-    Hub.listen('auth', ({ payload }) => {
-      switch (payload.event) {
-        case 'signedIn':
-          console.log('user have been signedIn successfully.');
-          break;
-        case 'signedOut':
-          console.log('user have been signedOut successfully.');
-          break;
-        case 'tokenRefresh':
-          console.log('auth tokens have been refreshed.');
-          break;
-        case 'tokenRefresh_failure':
-          console.log('failure while refreshing auth tokens.');
-          break;
-        case 'signInWithRedirect':
-          console.log('signInWithRedirect API has successfully been resolved.');
-          break;
-        case 'signInWithRedirect_failure':
-          console.log('failure while trying to resolve signInWithRedirect API.');
-          break;
-        case 'customOAuthState':
-          console.log('custom state returned from CognitoHosted UI');
-          break;
-      }
-    });
+    useEffect(() => {
+        return Hub.listen('auth', ({ payload }) => {
+            switch (payload.event) {
+                case 'signedIn':
+                    console.log('user have been signedIn successfully.');
+                    break;
+                case 'signedOut':
+                    console.log('user have been signedOut successfully.');
+                    break;
+                case 'tokenRefresh':
+                    console.log('auth tokens have been refreshed.');
+                    break;
+                case 'tokenRefresh_failure':
+                    console.log('failure while refreshing auth tokens.');
+                    break;
+                case 'signInWithRedirect':
+                    console.log('signInWithRedirect API has successfully been resolved.');
+                    break;
+                case 'signInWithRedirect_failure':
+                    console.log('failure while trying to resolve signInWithRedirect API.');
+                    break;
+                case 'customOAuthState':
+                    console.log('custom state returned from CognitoHosted UI');
+                    break;
+            }
+        });
+    }, []);
 
     async function handleSignIn() {
         try {
