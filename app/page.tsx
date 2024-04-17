@@ -10,7 +10,7 @@ export default async function App() {
 
     const home_page = (<><Home/></>)
     const error_page = (<>Site Unavailable</>)
-    const [page, setPage] = useState(error_page);
+    let page = error_page;
 
     async function isAuthenticatedUser() {
         try {
@@ -29,27 +29,27 @@ export default async function App() {
             switch (payload.event) {
                 case 'signedIn':
                     console.log('user have been signedIn successfully.');
-                    setPage(home_page)
+                    page = home_page
                     break;
                 case 'signedOut':
                     console.log('user have been signedOut successfully.');
-                    setPage(error_page)
+                    page = error_page
                     break;
                 case 'tokenRefresh':
                     console.log('auth tokens have been refreshed.');
-                    setPage(home_page)
+                    page = home_page
                     break;
                 case 'tokenRefresh_failure':
                     console.log('failure while refreshing auth tokens.');
-                    setPage(error_page)
+                    page = error_page
                     break;
                 case 'signInWithRedirect':
                     console.log('signInWithRedirect API has successfully been resolved.');
-                    setPage(home_page)
+                    page = home_page
                     break;
                 case 'signInWithRedirect_failure':
                     console.log('failure while trying to resolve signInWithRedirect API.');
-                    setPage(error_page)
+                    page = error_page
                     break;
                 case 'customOAuthState':
                     console.log('custom state returned from CognitoHosted UI');
@@ -66,12 +66,11 @@ export default async function App() {
                         custom: "MarketCastOkta"
                     },
                 });
-                setPage(home_page)
             } catch (error) {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion)
             }
         } else {
-            setPage(home_page)
+            page = home_page
         }
         return (page)
     }
