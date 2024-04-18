@@ -8,24 +8,15 @@ import { useRouter } from 'next/navigation'
 
 import { Amplify } from "aws-amplify";
 import awsExports from '../src/aws-exports';
-Amplify.configure(awsExports, { ssr: true });
-// Amplify.configure(awsExports);
+// Amplify.configure(awsExports, { ssr: true });
+Amplify.configure(awsExports);
 
 // Need the following to work around a Cognito issue. See link for further details:
 // https://stackoverflow.com/questions/40219518/aws-cognito-unauthenticated-login-error-window-is-not-defined-js
 // @ts-ignore
 import WindowMock from 'window-mock';
-// const window_mock = new WindowMock()
 // @ts-ignore
 global.window = new WindowMock()
-// global.window = {
-//     localStorage: window_mock.localStorage,
-//     origin: window_mock.origin
-// };
-// @ts-ignore
-// global.origin = {origin: window_mock.origin};
-// @ts-ignore
-// global.navigator = () => null;
 
 
 export const dynamic = "force-dynamic";
