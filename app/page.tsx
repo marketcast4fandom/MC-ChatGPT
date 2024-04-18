@@ -5,7 +5,6 @@ import { signInWithRedirect, AuthError, signOut, getCurrentUser } from 'aws-ampl
 import { Hub } from "aws-amplify/utils";
 import { Home } from "./components/home";
 import { useRouter } from 'next/navigation'
-// import { useEffect} from "react";
 
 export const dynamic = "force-dynamic";
 
@@ -14,43 +13,41 @@ export default async function App() {
     // const router = useRouter();
     // const home_page = (<div><ConfigureAmplifyClientSide /><Home/></div>);
     // const error_page = (<div><ConfigureAmplifyClientSide />Site Unavailable</div>);
-    const test_page_1 = (<div><ConfigureAmplifyClientSide />Test Page 1</div>);
-    const test_page_2 = (<div><ConfigureAmplifyClientSide />Test Page 2</div>);
+    const test_page_1 = (<div><ConfigureAmplifyClientSide />Test Page 1 - Signed Out</div>);
+    const test_page_2 = (<div><ConfigureAmplifyClientSide />Test Page 2 - Signed In</div>);
 
-    // useEffect(() => {
-    //     Hub.listen('auth', ({ payload }) => {
-    //         console.log(payload.event)
-    //         switch (payload.event) {
-    //             case 'signedIn':
-    //                 console.log('user have been signedIn successfully.');
-    //                 setPage(home_page)
-    //                 break;
-    //             case 'signedOut':
-    //                 console.log('user have been signedOut successfully.');
-    //                 setPage(error_page)
-    //                 break;
-    //             case 'tokenRefresh':
-    //                 console.log('auth tokens have been refreshed.');
-    //                 setPage(home_page)
-    //                 break;
-    //             case 'tokenRefresh_failure':
-    //                 console.log('failure while refreshing auth tokens.');
-    //                 setPage(error_page)
-    //                 break;
-    //             case 'signInWithRedirect':
-    //                 console.log('signInWithRedirect API has successfully been resolved.');
-    //                 setPage(home_page)
-    //                 break;
-    //             case 'signInWithRedirect_failure':
-    //                 console.log('failure while trying to resolve signInWithRedirect API.');
-    //                 setPage(error_page)
-    //                 break;
-    //             case 'customOAuthState':
-    //                 console.log('custom state returned from CognitoHosted UI');
-    //                 break;
-    //         }
-    //     });
-    // });
+    Hub.listen('auth', ({ payload }) => {
+        console.log(payload.event)
+        switch (payload.event) {
+            case 'signedIn':
+                console.log('user have been signedIn successfully.');
+                // setPage(home_page)
+                break;
+            case 'signedOut':
+                console.log('user have been signedOut successfully.');
+                // setPage(error_page)
+                break;
+            case 'tokenRefresh':
+                console.log('auth tokens have been refreshed.');
+                // setPage(home_page)
+                break;
+            case 'tokenRefresh_failure':
+                console.log('failure while refreshing auth tokens.');
+                // setPage(error_page)
+                break;
+            case 'signInWithRedirect':
+                console.log('signInWithRedirect API has successfully been resolved.');
+                // setPage(home_page)
+                break;
+            case 'signInWithRedirect_failure':
+                console.log('failure while trying to resolve signInWithRedirect API.');
+                // setPage(error_page)
+                break;
+            case 'customOAuthState':
+                console.log('custom state returned from CognitoHosted UI');
+                break;
+        }
+    });
 
     const isAuthUser = async () => {
         try {
@@ -63,9 +60,9 @@ export default async function App() {
         return false;
     }
 
-    const signInUser = async (isAuthUser: boolean) => {
-        if  (isAuthUser) {
-            console.log(`signInUser 1: ${isAuthUser}`);
+    const signInUser = async (isAuth: boolean) => {
+        if  (isAuth) {
+            console.log(`signInUser 1: ${isAuth}`);
             return true;
         } else {
             try {
@@ -75,7 +72,7 @@ export default async function App() {
                     },
                 });
                 console.log(`signInUser 2`);
-                return true;
+                return isAuthUser();
             } catch (error) {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion);
             }
@@ -89,7 +86,6 @@ export default async function App() {
         console.log(`userAuth: ${userAuth}`);
         const signedIn = await signInUser(userAuth);
         console.log(`signedIn: ${signedIn}`);
-        // router.refresh()
         if (signedIn) {
             // return home_page;
             console.log(`signedIn: test_page_2`);
