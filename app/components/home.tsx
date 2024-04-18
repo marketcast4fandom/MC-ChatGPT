@@ -212,13 +212,13 @@ export function Home() {
     useAccessStore.getState().fetch();
   }, []);
 
-  if (!useHasHydrated()) {
-    return <Loading />;
-  }
-
-  // if (!useAuthUser()) {
-  //   return <>Not Authorised</>;
+  // if (!useHasHydrated()) {
+  //   return <Loading />;
   // }
+
+  if (!useAuthUser()) {
+    return <>Not Authorised</>;
+  }
 
   return (
     <ErrorBoundary>
