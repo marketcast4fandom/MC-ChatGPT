@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 import '@aws-amplify/ui-react/styles.css';
 import ConfigureAmplifyClientSide from './ConfigureAmplify';
 import { signInWithRedirect, AuthError, signOut, getCurrentUser } from 'aws-amplify/auth';
