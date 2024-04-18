@@ -14,7 +14,12 @@ export const dynamic = "force-dynamic";
 
 export default async function OktaSignIn() {
 
-       const isAuthUser = async () => {
+    // const home_page = (<div><ConfigureAmplifyClientSide /><Home/></div>);
+    // const error_page = (<div><ConfigureAmplifyClientSide />Site Unavailable</div>);
+    const test_page_signed_out = (<div>Test Page 1 - Signed Out</div>);
+    const test_page_signed_in = (<div>Test Page 2 - Signed In</div>);
+
+    const isAuthUser = async () => {
         try {
             const { username, userId } = await getCurrentUser();
             console.log(`username: ${username}`);
