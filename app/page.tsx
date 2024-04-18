@@ -1,10 +1,15 @@
 // 'use client';
 import '@aws-amplify/ui-react/styles.css';
-import ConfigureAmplifyClientSide from './ConfigureAmplify';
+// import ConfigureAmplifyClientSide from './ConfigureAmplify';
 import { signInWithRedirect, AuthError, signOut, getCurrentUser } from 'aws-amplify/auth';
 import { Hub } from "aws-amplify/utils";
 import { Home } from "./components/home";
 import { useRouter } from 'next/navigation'
+
+import { Amplify } from "aws-amplify";
+import awsExports from '../src/aws-exports';
+// Amplify.configure(awsExports, { ssr: true });
+Amplify.configure(awsExports);
 
 export const dynamic = "force-dynamic";
 
@@ -13,8 +18,8 @@ export default async function App() {
     // const router = useRouter();
     // const home_page = (<div><ConfigureAmplifyClientSide /><Home/></div>);
     // const error_page = (<div><ConfigureAmplifyClientSide />Site Unavailable</div>);
-    const test_page_signed_out = (<div><ConfigureAmplifyClientSide />Test Page 1 - Signed Out</div>);
-    const test_page_signed_in = (<div><ConfigureAmplifyClientSide />Test Page 2 - Signed In</div>);
+    const test_page_signed_out = (<div>Test Page 1 - Signed Out</div>);
+    const test_page_signed_in = (<div>Test Page 2 - Signed In</div>);
 
     Hub.listen('auth', ({ payload }) => {
         console.log(payload.event)
