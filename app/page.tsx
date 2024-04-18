@@ -13,8 +13,8 @@ export default async function App() {
     // const router = useRouter();
     // const home_page = (<div><ConfigureAmplifyClientSide /><Home/></div>);
     // const error_page = (<div><ConfigureAmplifyClientSide />Site Unavailable</div>);
-    const test_page_1 = (<div><ConfigureAmplifyClientSide />Test Page 1 - Signed Out</div>);
-    const test_page_2 = (<div><ConfigureAmplifyClientSide />Test Page 2 - Signed In</div>);
+    const test_page_signed_out = (<div><ConfigureAmplifyClientSide />Test Page 1 - Signed Out</div>);
+    const test_page_signed_in = (<div><ConfigureAmplifyClientSide />Test Page 2 - Signed In</div>);
 
     Hub.listen('auth', ({ payload }) => {
         console.log(payload.event)
@@ -60,8 +60,9 @@ export default async function App() {
         return false;
     }
 
-    const signInUser = async (isAuth: boolean) => {
-        if  (isAuth) {
+    const signInUser = async () => {
+        const isAuth = await isAuthUser();
+        if (isAuth) {
             console.log(`signInUser 1: ${isAuth}`);
             return true;
         } else {
@@ -72,28 +73,26 @@ export default async function App() {
                     },
                 });
                 console.log(`signInUser 2`);
-                return isAuthUser();
             } catch (error) {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion);
             }
             console.log(`signInUser 3`);
-            return false;
+            return isAuthUser();
         }
     }
 
     const handleSignIn = async () => {
-        const userAuth = await isAuthUser();
-        console.log(`userAuth: ${userAuth}`);
-        const signedIn = await signInUser(userAuth);
+
+        const signedIn = await signInUser();
         console.log(`signedIn: ${signedIn}`);
         if (signedIn) {
             // return home_page;
-            console.log(`signedIn: test_page_2`);
-            return test_page_2;
+            console.log(`signedIn: test_page_signed_in`);
+            return test_page_signed_in;
         } else {
             // return error_page;
-            console.log(`signedIn: test_page_1`);
-            return test_page_1;
+            console.log(`signedIn: test_page_signed_out`);
+            return test_page_signed_out;
         }
     }
 
