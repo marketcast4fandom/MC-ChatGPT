@@ -100,16 +100,6 @@ function useHtmlLang() {
   }, []);
 }
 
-const useHasHydrated = () => {
-  const [hasHydrated, setHasHydrated] = useState<boolean>(false);
-
-  useEffect(() => {
-    setHasHydrated(true);
-  }, []);
-
-  return hasHydrated;
-};
-
 const loadAsyncGoogleFont = () => {
   const linkEl = document.createElement("link");
   const proxyFontUrl = "/google-fonts";
@@ -212,12 +202,8 @@ export function Home() {
     useAccessStore.getState().fetch();
   }, []);
 
-  // if (!useHasHydrated()) {
-  //   return <Loading />;
-  // }
-
   if (!useAuthUser()) {
-    return <>Not Authorised</>;
+    return <Loading />;
   }
 
   return (
@@ -228,17 +214,4 @@ export function Home() {
     </ErrorBoundary>
   );
 
-  // const homeResponse = OktaSignIn().then(isOktaAuth => {
-  //   if (isOktaAuth) {
-  //     return (
-  //       <ErrorBoundary>
-  //         <Router>
-  //           <Screen />
-  //         </Router>
-  //       </ErrorBoundary>
-  //     );
-  //   } else {
-  //     return (<div>Not Authorised</div>);
-  //   }
-  // })
 }
