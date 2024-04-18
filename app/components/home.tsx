@@ -204,7 +204,7 @@ export async function Home() {
     return <Loading />;
   }
 
-  const isAuth = await OktaSignIn()
+  const isAuth = false //await OktaSignIn()
   if (isAuth) {
     return (
       <ErrorBoundary>
