@@ -72,12 +72,13 @@ export default async function App() {
             return true;
         } else {
             try {
+                console.log(`signInUser 2a`);
                 await signInWithRedirect({
                     provider: {
                         custom: "MarketCastOkta"
                     },
                 });
-                console.log(`signInUser 2`);
+                console.log(`signInUser 2b`);
             } catch (error) {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion);
             }
