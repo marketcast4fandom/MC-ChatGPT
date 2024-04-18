@@ -7,7 +7,7 @@ export default function App() {
 
     return (
         <script>
-            const signedIn = await OktaSignIn();
+            const signedIn = OktaSignIn();
             {/*if (signedIn) {*/}
             {/*    // return home_page;*/}
             {/*    console.log(`signedIn: test_page_signed_in`);*/}
