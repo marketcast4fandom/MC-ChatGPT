@@ -190,6 +190,18 @@ export function useLoadData() {
   }, []);
 }
 
+const useAuthUser = () => {
+  const [authUser, setAuthUser] = useState<boolean>(false);
+
+  useEffect(() => {
+    OktaSignIn().then(isOktaAuth => {
+      setAuthUser(isOktaAuth);
+    })
+  }, []);
+
+  return authUser;
+};
+
 export function Home() {
   useSwitchTheme();
   useLoadData();
@@ -204,17 +216,29 @@ export function Home() {
     return <Loading />;
   }
 
-  return OktaSignIn().then(isOktaAuth => {
-    if (isOktaAuth) {
-      return (
-        <ErrorBoundary>
-          <Router>
-            <Screen />
-          </Router>
-        </ErrorBoundary>
-      );
-    } else {
-      return (<div>Not Authorised</div>)
-    }
-  })
+  // if (!useAuthUser()) {
+  //   return <>Not Authorised</>;
+  // }
+
+  return (
+    <ErrorBoundary>
+      <Router>
+        <Screen />
+      </Router>
+    </ErrorBoundary>
+  );
+
+  // const homeResponse = OktaSignIn().then(isOktaAuth => {
+  //   if (isOktaAuth) {
+  //     return (
+  //       <ErrorBoundary>
+  //         <Router>
+  //           <Screen />
+  //         </Router>
+  //       </ErrorBoundary>
+  //     );
+  //   } else {
+  //     return (<div>Not Authorised</div>);
+  //   }
+  // })
 }

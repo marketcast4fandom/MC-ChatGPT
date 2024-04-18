@@ -12,6 +12,71 @@ Amplify.configure(awsExports);
 
 export const dynamic = "force-dynamic";
 
+// import React, { Component } from 'react';
+//
+// export enum AuthStatus {
+//   isLoggedIn = "isLoggedIn",
+//   isNotLoggedIn = "isNotLoggedIn",
+//   Uninitialized = "uninitialized"
+// }
+//
+// export enum ProgressStatus {
+//   InProgress = "InProgress",
+//   Uninitialized = "Uninitialized",
+//   Done = "Done",
+//   Error = "Error"
+// }
+//
+// class AuthenticationShell extends Component {
+//
+//   state = {
+//     authStatus: AuthStatus.Uninitialized,
+//     user: undefined
+//   }
+//
+//   componentDidMount = () => {
+//     // this function will launch when the component is mounted to the dom
+//     this.getCurrentUser()
+//   }
+//
+//   getCurrentUser = () => {
+//     getCurrentUser().then(user => {
+//       // if user is authenticated update authStatus & user state here
+//       this.setState({
+//         authStatus: AuthStatus.isLoggedIn,
+//         user: user.username
+//       })
+//     }).catch(e => {
+//       // if user is not authenticated update authStatus
+//       this.setState({ authStatus: AuthStatus.isNotLoggedIn })
+//     });
+//   }
+//
+//   render() {
+//     const { authStatus } = this.state;
+//     switch (authStatus) {
+//       case AuthStatus.isLoggedIn:
+//         return (
+//           <div>
+//             isLoggedIn
+//           </div>
+//         )
+//       case AuthStatus.isNotLoggedIn:
+//         return (
+//           <div>
+//             isNotLoggedIn
+//           </div>
+//         )
+//       default: return null;
+//       // when authstatus is Uninitialized or not isLoggedIn and not isNotLoggedIn null will be rendered
+//       // Rendering null while waiting on some async function is not ideal
+//     }
+//   }
+// }
+//
+// export default AuthenticationShell;
+
+
 export default async function OktaSignIn() {
 
     // const home_page = (<div><Home/></div>);
