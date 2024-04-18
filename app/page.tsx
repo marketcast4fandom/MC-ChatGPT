@@ -81,6 +81,7 @@ export default async function App() {
                 console.log(`signInUser 2b`);
             } catch (error) {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion);
+                console.log(`signInUser error: ${error}`);
             }
             console.log(`signInUser 3`);
             return isAuthUser();
