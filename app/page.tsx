@@ -6,6 +6,9 @@ import { Hub } from "aws-amplify/utils";
 import { Home } from "./components/home";
 import { useRouter } from 'next/navigation'
 
+// https://stackoverflow.com/questions/40219518/aws-cognito-unauthenticated-login-error-window-is-not-defined-js
+import window from 'ember-window-mock'
+
 import { Amplify } from "aws-amplify";
 import awsExports from '../src/aws-exports';
 Amplify.configure(awsExports, { ssr: true });
