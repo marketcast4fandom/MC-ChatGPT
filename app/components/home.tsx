@@ -190,8 +190,7 @@ export function useLoadData() {
   }, []);
 }
 
-export function Home() {
-  const isAuth = OktaSignIn()
+export async function Home() {
   useSwitchTheme();
   useLoadData();
   useHtmlLang();
@@ -205,11 +204,16 @@ export function Home() {
     return <Loading />;
   }
 
-  return (
-    <ErrorBoundary>
-      <Router>
-        <Screen />
-      </Router>
-    </ErrorBoundary>
-  );
+  const isAuth = await OktaSignIn()
+  if (isAuth) {
+    return (
+      <ErrorBoundary>
+        <Router>
+          <Screen />
+        </Router>
+      </ErrorBoundary>
+    );
+  } else {
+    return (<div>Not Authorised</div>)
+  }
 }
