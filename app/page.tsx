@@ -88,14 +88,18 @@ export default async function App() {
             // return home_page;
             console.log(`signedIn: test_page_2`);
             return test_page_2;
+        } else {
+            // return error_page;
+            console.log(`signedIn: test_page_1`);
+            return test_page_1;
         }
-        // return error_page;
-        console.log(`signedIn: test_page_1`);
-        return test_page_1;
     }
 
     return (
-        <div> { await handleSignIn() } </div>
+        <div>
+            <script> var page = await handleSignIn(); </script>
+            <script> document.write(page); </script>
+        </div>
     );
 }
 
