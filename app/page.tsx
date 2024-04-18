@@ -14,9 +14,11 @@ Amplify.configure(awsExports, { ssr: true });
 // https://stackoverflow.com/questions/40219518/aws-cognito-unauthenticated-login-error-window-is-not-defined-js
 // @ts-ignore
 import WindowMock from 'window-mock';
+const window_mock = new WindowMock()
 // @ts-ignore
-global.window = {localStorage: new WindowMock().localStorage};
+global.window = {localStorage: window_mock.localStorage};
 // @ts-ignore
+global.origin = {origin: window_mock.origin};
 // global.navigator = () => null;
 
 
