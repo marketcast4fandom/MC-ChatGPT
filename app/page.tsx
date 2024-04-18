@@ -18,8 +18,14 @@ import WindowMock from 'window-mock';
 // @ts-ignore
 global.window = new WindowMock()
 
+export const dynamic = "auto";
 
-export const dynamic = "force-dynamic";
+// import dynamic from 'next/dynamic'
+// const HomeWithNoSSR = dynamic(() => import('./components/home'), {
+//   ssr: false
+// })
+// export default () => <DynamicComponentWithNoSSR />
+
 
 export default async function App() {
 
