@@ -204,16 +204,18 @@ export function Home() {
     return <Loading />;
   }
 
-  const isAuth = false //await OktaSignIn()
-  if (isAuth) {
-    return (
-      <ErrorBoundary>
-        <Router>
-          <Screen />
-        </Router>
-      </ErrorBoundary>
-    );
-  } else {
-    return (<div>Not Authorised</div>)
-  }
+  OktaSignIn().then(isAuth => {
+    /* and now you work within this callback scope */
+    if (isAuth) {
+      return (
+        <ErrorBoundary>
+          <Router>
+            <Screen />
+          </Router>
+        </ErrorBoundary>
+      );
+    } else {
+      return (<div>Not Authorised</div>)
+    }
+  })
 }
