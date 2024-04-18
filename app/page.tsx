@@ -8,8 +8,8 @@ import { useRouter } from 'next/navigation'
 
 import { Amplify } from "aws-amplify";
 import awsExports from '../src/aws-exports';
-// Amplify.configure(awsExports, { ssr: true });
-Amplify.configure(awsExports);
+Amplify.configure(awsExports, { ssr: true });
+// Amplify.configure(awsExports);
 
 export const dynamic = "force-dynamic";
 
