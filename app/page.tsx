@@ -98,7 +98,7 @@ export default async function App() {
     return (
         <div>
             <script>
-                var page = await handleSignIn();
+                var page = handleSignIn();
                 document.write(page);
             </script>
         </div>
