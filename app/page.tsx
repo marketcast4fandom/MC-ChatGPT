@@ -1,22 +1,20 @@
-'use client';
-import '@aws-amplify/ui-react/styles.css';
-import OktaSignIn from "@/app/signin";
+import { Analytics } from "@vercel/analytics/react";
 
+import { Home } from "./components/home";
 
-export default function App() {
+import { getServerSideConfig } from "./config/server";
 
-    return (
-        <script>
-            const signedIn = OktaSignIn();
-            {/*if (signedIn) {*/}
-            {/*    // return home_page;*/}
-            {/*    console.log(`signedIn: test_page_signed_in`);*/}
-            {/*    page = test_page_signed_in;*/}
-            {/*} else {*/}
-            {/*    // return error_page;*/}
-            {/*    console.log(`signedIn: test_page_signed_out`);*/}
-            {/*};*/}
-        </script>
-    );
+const serverConfig = getServerSideConfig();
+
+export default async function App() {
+  return (
+    <>
+      <Home />
+      {serverConfig?.isVercel && (
+        <>
+          <Analytics />
+        </>
+      )}
+    </>
+  );
 }
-

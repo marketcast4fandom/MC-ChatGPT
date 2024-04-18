@@ -2,6 +2,8 @@
 
 require("../polyfill");
 
+import OktaSignIn from "./signin"
+
 import { useState, useEffect } from "react";
 
 import styles from "./home.module.scss";
@@ -24,7 +26,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { SideBar } from "./sidebar";
-import { useAppConfig } from "../store/config";
+import { useAppConfig } from "@/app/store";
 import { AuthPage } from "./auth";
 import { getClientConfig } from "../config/client";
 import { ClientApi } from "../client/api";
@@ -189,6 +191,7 @@ export function useLoadData() {
 }
 
 export function Home() {
+  const isAuth = OktaSignIn()
   useSwitchTheme();
   useLoadData();
   useHtmlLang();

@@ -1,6 +1,6 @@
 import { Amplify } from "aws-amplify";
 import {AuthError, getCurrentUser, signInWithRedirect} from "aws-amplify/auth";
-import awsExports from '../src/aws-exports';
+import awsExports from '../../src/aws-exports';
 Amplify.configure(awsExports);
 
 // // Need the following to work around a Cognito issue. See link for further details:
@@ -14,8 +14,8 @@ export const dynamic = "force-dynamic";
 
 export default async function OktaSignIn() {
 
-    // const home_page = (<div><ConfigureAmplifyClientSide /><Home/></div>);
-    // const error_page = (<div><ConfigureAmplifyClientSide />Site Unavailable</div>);
+    // const home_page = (<div><Home/></div>);
+    // const error_page = (<div>Site Unavailable</div>);
     const test_page_signed_out = (<div>Test Page 1 - Signed Out</div>);
     const test_page_signed_in = (<div>Test Page 2 - Signed In</div>);
 
