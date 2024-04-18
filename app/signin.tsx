@@ -1,14 +1,14 @@
 import { Amplify } from "aws-amplify";
+import {AuthError, getCurrentUser, signInWithRedirect} from "aws-amplify/auth";
 import awsExports from '../src/aws-exports';
 Amplify.configure(awsExports);
 
-// Need the following to work around a Cognito issue. See link for further details:
-// https://stackoverflow.com/questions/40219518/aws-cognito-unauthenticated-login-error-window-is-not-defined-js
-// @ts-ignore
-import WindowMock from 'window-mock';
-import {AuthError, getCurrentUser, signInWithRedirect} from "aws-amplify/auth";
-// @ts-ignore
-global.window = new WindowMock()
+// // Need the following to work around a Cognito issue. See link for further details:
+// // https://stackoverflow.com/questions/40219518/aws-cognito-unauthenticated-login-error-window-is-not-defined-js
+// // @ts-ignore
+// import WindowMock from 'window-mock';
+// // @ts-ignore
+// global.window = new WindowMock()
 
 export const dynamic = "force-dynamic";
 
