@@ -18,7 +18,7 @@ import WindowMock from 'window-mock';
 // @ts-ignore
 global.window = new WindowMock()
 
-export const dynamic = "auto";
+export const dynamic = "force-dynamic";
 
 // import dynamic from 'next/dynamic'
 // const HomeWithNoSSR = dynamic(() => import('./components/home'), {
@@ -81,7 +81,7 @@ export default async function App() {
     }
 
     const signInUser = async () => {
-        const isAuth = await isAuthUser();
+        let isAuth = await isAuthUser();
         if (isAuth) {
             console.log(`signInUser 1: ${isAuth}`);
             return true;
@@ -99,7 +99,8 @@ export default async function App() {
                 error instanceof TypeError && console.log(error.name, error.message);
             }
             console.log(`signInUser 3`);
-            return isAuthUser();
+            isAuth = await isAuthUser();
+            return isAuth;
         }
     }
 
