@@ -190,7 +190,7 @@ export function useLoadData() {
   }, []);
 }
 
-export async function Home() {
+export function Home() {
   useSwitchTheme();
   useLoadData();
   useHtmlLang();
