@@ -5,7 +5,7 @@ import { signInWithRedirect, AuthError, signOut, getCurrentUser } from 'aws-ampl
 import { Hub } from "aws-amplify/utils";
 import { Home } from "./components/home";
 
-export default async function App() {
+export default function App() {
 
     const home_page = (<div><ConfigureAmplifyClientSide /><Home/></div>);
     const error_page = (<div><ConfigureAmplifyClientSide />Site Unavailable</div>);
@@ -96,7 +96,7 @@ export default async function App() {
     }
 
     return (
-        <div> { await Promise.resolve(handleSignIn()) } </div>
+        <div> { handleSignIn() } </div>
     );
 }
 
