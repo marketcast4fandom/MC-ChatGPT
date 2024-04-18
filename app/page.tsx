@@ -70,6 +70,7 @@ export default async function App() {
             return true;
         } catch (error) {
             error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion);
+            error instanceof TypeError && console.log(error.name, error.message);
         }
         return false;
     }
@@ -90,7 +91,7 @@ export default async function App() {
                 console.log(`signInUser 2b`);
             } catch (error) {
                 error instanceof AuthError && console.log(error.name, error.message, error.recoverySuggestion);
-                console.log(`signInUser error: ${error}`);
+                error instanceof TypeError && console.log(error.name, error.message);
             }
             console.log(`signInUser 3`);
             return isAuthUser();
