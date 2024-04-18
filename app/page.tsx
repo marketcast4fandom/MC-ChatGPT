@@ -17,7 +17,7 @@ import WindowMock from 'window-mock';
 // @ts-ignore
 global.window = {localStorage: new WindowMock().localStorage};
 // @ts-ignore
-global.navigator = () => null;
+// global.navigator = () => null;
 
 
 export const dynamic = "force-dynamic";
