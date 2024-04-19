@@ -2,6 +2,8 @@
 
 require("../polyfill");
 
+import OktaSignIn from "./signin"
+
 import { useState, useEffect } from "react";
 
 import styles from "./home.module.scss";
@@ -24,7 +26,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { SideBar } from "./sidebar";
-import { useAppConfig } from "../store/config";
+import { useAppConfig } from "@/app/store";
 import { AuthPage } from "./auth";
 import { getClientConfig } from "../config/client";
 import { ClientApi } from "../client/api";
@@ -97,16 +99,6 @@ function useHtmlLang() {
     }
   }, []);
 }
-
-const useHasHydrated = () => {
-  const [hasHydrated, setHasHydrated] = useState<boolean>(false);
-
-  useEffect(() => {
-    setHasHydrated(true);
-  }, []);
-
-  return hasHydrated;
-};
 
 const loadAsyncGoogleFont = () => {
   const linkEl = document.createElement("link");
@@ -188,6 +180,18 @@ export function useLoadData() {
   }, []);
 }
 
+const useAuthUser = () => {
+  const [authUser, setAuthUser] = useState<boolean>(false);
+
+  useEffect(() => {
+    OktaSignIn().then(isOktaAuth => {
+      setAuthUser(isOktaAuth);
+    })
+  }, []);
+
+  return authUser;
+};
+
 export function Home() {
   useSwitchTheme();
   useLoadData();
@@ -198,7 +202,7 @@ export function Home() {
     useAccessStore.getState().fetch();
   }, []);
 
-  if (!useHasHydrated()) {
+  if (!useAuthUser()) {
     return <Loading />;
   }
 
@@ -209,4 +213,5 @@ export function Home() {
       </Router>
     </ErrorBoundary>
   );
+
 }
