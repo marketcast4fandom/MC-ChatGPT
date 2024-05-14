@@ -26,7 +26,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { SideBar } from "./sidebar";
-import { useAppConfig } from "@/app/store";
+import { useAppConfig } from "../store/config";
 import { AuthPage } from "./auth";
 import { getClientConfig } from "../config/client";
 import { ClientApi } from "../client/api";
@@ -99,6 +99,16 @@ function useHtmlLang() {
     }
   }, []);
 }
+
+const useHasHydrated = () => {
+  const [hasHydrated, setHasHydrated] = useState<boolean>(false);
+
+  useEffect(() => {
+    setHasHydrated(true);
+  }, []);
+
+  return hasHydrated;
+};
 
 const loadAsyncGoogleFont = () => {
   const linkEl = document.createElement("link");
@@ -213,5 +223,4 @@ export function Home() {
       </Router>
     </ErrorBoundary>
   );
-
 }
