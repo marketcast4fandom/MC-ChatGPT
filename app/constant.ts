@@ -102,16 +102,16 @@ export const EXPORT_MESSAGE_CLASS_NAME = "export-markdown";
 
 export enum ServiceProvider {
   OpenAI = "OpenAI",
-  // Azure = "Azure",
-  // Google = "Google",
-  // Anthropic = "Anthropic",
-  // Baidu = "Baidu",
-  // ByteDance = "ByteDance",
-  // Alibaba = "Alibaba",
-  // Tencent = "Tencent",
-  // Moonshot = "Moonshot",
-  // Stability = "Stability",
-  // Iflytek = "Iflytek",
+  Azure = "Azure",
+  Google = "Google",
+  Anthropic = "Anthropic",
+  Baidu = "Baidu",
+  ByteDance = "ByteDance",
+  Alibaba = "Alibaba",
+  Tencent = "Tencent",
+  Moonshot = "Moonshot",
+  Stability = "Stability",
+  Iflytek = "Iflytek",
 }
 
 // Google API safety settings, see https://ai.google.dev/gemini-api/docs/safety-settings
@@ -380,7 +380,7 @@ export const DEFAULT_MODELS = [
   })),
   ...openaiModels.map((name) => ({
     name,
-    available: true,
+    available: false,
     sorted: seq++,
     provider: {
       id: "azure",
@@ -391,7 +391,7 @@ export const DEFAULT_MODELS = [
   })),
   ...googleModels.map((name) => ({
     name,
-    available: true,
+    available: false,
     sorted: seq++,
     provider: {
       id: "google",
@@ -402,7 +402,7 @@ export const DEFAULT_MODELS = [
   })),
   ...anthropicModels.map((name) => ({
     name,
-    available: true,
+    available: false,
     sorted: seq++,
     provider: {
       id: "anthropic",
@@ -413,7 +413,7 @@ export const DEFAULT_MODELS = [
   })),
   ...baiduModels.map((name) => ({
     name,
-    available: true,
+    available: false,
     sorted: seq++,
     provider: {
       id: "baidu",
@@ -424,7 +424,7 @@ export const DEFAULT_MODELS = [
   })),
   ...bytedanceModels.map((name) => ({
     name,
-    available: true,
+    available: false,
     sorted: seq++,
     provider: {
       id: "bytedance",
@@ -435,7 +435,7 @@ export const DEFAULT_MODELS = [
   })),
   ...alibabaModes.map((name) => ({
     name,
-    available: true,
+    available: false,
     sorted: seq++,
     provider: {
       id: "alibaba",
@@ -446,7 +446,7 @@ export const DEFAULT_MODELS = [
   })),
   ...tencentModels.map((name) => ({
     name,
-    available: true,
+    available: false,
     sorted: seq++,
     provider: {
       id: "tencent",
@@ -457,7 +457,7 @@ export const DEFAULT_MODELS = [
   })),
   ...moonshotModes.map((name) => ({
     name,
-    available: true,
+    available: false,
     sorted: seq++,
     provider: {
       id: "moonshot",
@@ -468,7 +468,7 @@ export const DEFAULT_MODELS = [
   })),
   ...iflytekModels.map((name) => ({
     name,
-    available: true,
+    available: false,
     sorted: seq++,
     provider: {
       id: "iflytek",
