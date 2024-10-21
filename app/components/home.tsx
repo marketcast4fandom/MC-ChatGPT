@@ -2,6 +2,8 @@
 
 require("../polyfill");
 
+import OktaSignIn from "./signin"
+
 import { useState, useEffect } from "react";
 
 import styles from "./home.module.scss";
@@ -220,6 +222,18 @@ export function useLoadData() {
   }, []);
 }
 
+const useAuthUser = () => {
+  const [authUser, setAuthUser] = useState<boolean>(false);
+
+  useEffect(() => {
+    OktaSignIn().then(isOktaAuth => {
+      setAuthUser(isOktaAuth);
+    })
+  }, []);
+
+  return authUser;
+};
+
 export function Home() {
   useSwitchTheme();
   useLoadData();
@@ -230,7 +244,7 @@ export function Home() {
     useAccessStore.getState().fetch();
   }, []);
 
-  if (!useHasHydrated()) {
+  if (!useAuthUser()) {
     return <Loading />;
   }
 
