@@ -7,6 +7,7 @@ import {
 import { getClientConfig } from "../config/client";
 import { createPersistStore } from "../utils/store";
 import ChatGptIcon from "../icons/chatmc.png";
+import { clientUpdate } from "../utils";
 import Locale from "../locales";
 import { ClientApi } from "../client/api";
 
@@ -119,6 +120,7 @@ export const useUpdateStore = createPersistStore(
                           icon: `${ChatGptIcon.src}`,
                           sound: "Default",
                         });
+                        clientUpdate();
                       }
                     }
                   });

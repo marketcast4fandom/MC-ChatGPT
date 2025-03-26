@@ -72,3 +72,9 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+
+
+masks.json
+
+# mcp config
+app/mcp/mcp_config.json

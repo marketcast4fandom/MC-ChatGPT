@@ -4,15 +4,62 @@ import {
   GoogleSafetySettingsThreshold,
   ServiceProvider,
   StoreKey,
+  ApiPath,
+  OPENAI_BASE_URL,
+  ANTHROPIC_BASE_URL,
+  GEMINI_BASE_URL,
+  BAIDU_BASE_URL,
+  BYTEDANCE_BASE_URL,
+  ALIBABA_BASE_URL,
+  TENCENT_BASE_URL,
+  MOONSHOT_BASE_URL,
+  STABILITY_BASE_URL,
+  IFLYTEK_BASE_URL,
+  DEEPSEEK_BASE_URL,
+  XAI_BASE_URL,
+  CHATGLM_BASE_URL,
+  SILICONFLOW_BASE_URL,
 } from "../constant";
 import { getHeaders } from "../client/api";
 import { getClientConfig } from "../config/client";
 import { createPersistStore } from "../utils/store";
 import { ensure } from "../utils/clone";
 import { DEFAULT_CONFIG } from "./config";
+import { getModelProvider } from "../utils/model";
 
 let fetchState = 0; // 0 not fetch, 1 fetching, 2 done
 
+const isApp = getClientConfig()?.buildMode === "export";
+
+const DEFAULT_OPENAI_URL = isApp ? OPENAI_BASE_URL : ApiPath.OpenAI;
+
+const DEFAULT_GOOGLE_URL = isApp ? GEMINI_BASE_URL : ApiPath.Google;
+
+const DEFAULT_ANTHROPIC_URL = isApp ? ANTHROPIC_BASE_URL : ApiPath.Anthropic;
+
+const DEFAULT_BAIDU_URL = isApp ? BAIDU_BASE_URL : ApiPath.Baidu;
+
+const DEFAULT_BYTEDANCE_URL = isApp ? BYTEDANCE_BASE_URL : ApiPath.ByteDance;
+
+const DEFAULT_ALIBABA_URL = isApp ? ALIBABA_BASE_URL : ApiPath.Alibaba;
+
+const DEFAULT_TENCENT_URL = isApp ? TENCENT_BASE_URL : ApiPath.Tencent;
+
+const DEFAULT_MOONSHOT_URL = isApp ? MOONSHOT_BASE_URL : ApiPath.Moonshot;
+
+const DEFAULT_STABILITY_URL = isApp ? STABILITY_BASE_URL : ApiPath.Stability;
+
+const DEFAULT_IFLYTEK_URL = isApp ? IFLYTEK_BASE_URL : ApiPath.Iflytek;
+
+const DEFAULT_DEEPSEEK_URL = isApp ? DEEPSEEK_BASE_URL : ApiPath.DeepSeek;
+
+const DEFAULT_XAI_URL = isApp ? XAI_BASE_URL : ApiPath.XAI;
+
+const DEFAULT_CHATGLM_URL = isApp ? CHATGLM_BASE_URL : ApiPath.ChatGLM;
+
+const DEFAULT_SILICONFLOW_URL = isApp
+  ? SILICONFLOW_BASE_URL
+  : ApiPath.SiliconFlow;
 const isApp = getClientConfig()?.buildMode === "export";
 
 const DEFAULT_OPENAI_URL = isApp
@@ -112,6 +159,22 @@ const DEFAULT_ACCESS_STATE = {
   iflytekApiKey: "",
   iflytekApiSecret: "",
 
+  // deepseek
+  deepseekUrl: DEFAULT_DEEPSEEK_URL,
+  deepseekApiKey: "",
+
+  // xai
+  xaiUrl: DEFAULT_XAI_URL,
+  xaiApiKey: "",
+
+  // chatglm
+  chatglmUrl: DEFAULT_CHATGLM_URL,
+  chatglmApiKey: "",
+
+  // siliconflow
+  siliconflowUrl: DEFAULT_SILICONFLOW_URL,
+  siliconflowApiKey: "",
+
   // server config
   needCode: true,
   hideUserApiKey: false,
@@ -133,6 +196,15 @@ export const useAccessStore = createPersistStore(
       this.fetch();
 
       return get().needCode;
+    },
+    getVisionModels() {
+      this.fetch();
+      return get().visionModels;
+    },
+    edgeVoiceName() {
+      this.fetch();
+
+      return get().edgeTTSVoiceName;
     },
 
     edgeVoiceName() {
@@ -179,6 +251,21 @@ export const useAccessStore = createPersistStore(
     isValidIflytek() {
       return ensure(get(), ["iflytekApiKey"]);
     },
+    isValidDeepSeek() {
+      return ensure(get(), ["deepseekApiKey"]);
+    },
+
+    isValidXAI() {
+      return ensure(get(), ["xaiApiKey"]);
+    },
+
+    isValidChatGLM() {
+      return ensure(get(), ["chatglmApiKey"]);
+    },
+
+    isValidSiliconFlow() {
+      return ensure(get(), ["siliconflowApiKey"]);
+    },
 
     isAuthorized() {
       this.fetch();
@@ -195,6 +282,10 @@ export const useAccessStore = createPersistStore(
         this.isValidTencent() ||
         this.isValidMoonshot() ||
         this.isValidIflytek() ||
+        this.isValidDeepSeek() ||
+        this.isValidXAI() ||
+        this.isValidChatGLM() ||
+        this.isValidSiliconFlow() ||
         !this.enabledAccessControl() ||
         (this.enabledAccessControl() && ensure(get(), ["accessCode"]))
       );
@@ -213,9 +304,9 @@ export const useAccessStore = createPersistStore(
         .then((res) => {
           const defaultModel = res.defaultModel ?? "";
           if (defaultModel !== "") {
-            const [model, providerName] = defaultModel.split("@");
+            const [model, providerName] = getModelProvider(defaultModel);
             DEFAULT_CONFIG.modelConfig.model = model;
-            DEFAULT_CONFIG.modelConfig.providerName = providerName;
+            DEFAULT_CONFIG.modelConfig.providerName = providerName as any;
           }
 
           return res;

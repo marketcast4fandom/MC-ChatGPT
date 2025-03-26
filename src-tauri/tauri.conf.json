@@ -8,8 +8,8 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "ChatMC",
-    "version": "2.15.3"
+    "productName": "NextChat",
+    "version": "2.15.8"
   },
   "tauri": {
     "allowlist": {
@@ -73,7 +73,7 @@
         "icons/icon.ico"
       ],
       "identifier": "com.yida.chatgpt.next.web",
-      "longDescription": "ChatMC is based on NextChat which is a cross-platform ChatGPT client, including Web/Win/Linux/OSX/PWA.",
+      "longDescription": "NextChat is a cross-platform ChatGPT client, including Web/Win/Linux/OSX/PWA.",
       "macOS": {
         "entitlements": null,
         "exceptionDomain": "",
@@ -82,7 +82,7 @@
         "signingIdentity": null
       },
       "resources": [],
-      "shortDescription": "ChatMC App",
+      "shortDescription": "NextChat App",
       "targets": "all",
       "windows": {
         "certificateThumbprint": null,
@@ -99,7 +99,7 @@
       "endpoints": [
         "https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web/releases/latest/download/latest.json"
       ],
-      "dialog": false,
+      "dialog": true,
       "windows": {
         "installMode": "passive"
       },
@@ -110,7 +110,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "ChatMC",
+        "title": "NextChat",
         "width": 960,
         "hiddenTitle": true,
         "titleBarStyle": "Overlay"
