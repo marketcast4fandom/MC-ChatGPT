@@ -6,7 +6,8 @@ import {
 } from "../constant";
 import { getClientConfig } from "../config/client";
 import { createPersistStore } from "../utils/store";
-import ChatGptIcon from "../icons/chatmc.png";
+import { clientUpdate } from "../utils";
+import ChatGptIcon from "../icons/chatgpt.png";
 import Locale from "../locales";
 import { ClientApi } from "../client/api";
 
@@ -104,7 +105,7 @@ export const useUpdateStore = createPersistStore(
                       if (version === remoteId) {
                         // Show a notification using Tauri
                         window.__TAURI__?.notification.sendNotification({
-                          title: "ChatMC",
+                          title: "NextChat",
                           body: `${Locale.Settings.Update.IsLatest}`,
                           icon: `${ChatGptIcon.src}`,
                           sound: "Default",
@@ -114,11 +115,12 @@ export const useUpdateStore = createPersistStore(
                           Locale.Settings.Update.FoundUpdate(`${remoteId}`);
                         // Show a notification for the new version using Tauri
                         window.__TAURI__?.notification.sendNotification({
-                          title: "ChatMC",
+                          title: "NextChat",
                           body: updateMessage,
                           icon: `${ChatGptIcon.src}`,
                           sound: "Default",
                         });
+                        clientUpdate();
                       }
                     }
                   });

@@ -1,11 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-aws-exports.js
-metadata.xml
-package-lock.json
-amplify/
-src/
-
 # dependencies
 /node_modules
 /.pnp
@@ -72,3 +66,9 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+
+
+masks.json
+
+# mcp config
+app/mcp/mcp_config.json
