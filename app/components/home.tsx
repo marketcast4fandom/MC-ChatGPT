@@ -2,7 +2,10 @@
 
 require("../polyfill");
 
-import { useEffect, useState } from "react";
+import OktaSignIn from "./signin"
+
+import { useState, useEffect } from "react";
+
 import styles from "./home.module.scss";
 
 import BotIcon from "../icons/bot.svg";
@@ -234,6 +237,18 @@ export function useLoadData() {
   }, []);
 }
 
+const useAuthUser = () => {
+  const [authUser, setAuthUser] = useState<boolean>(false);
+
+  useEffect(() => {
+    OktaSignIn().then(isOktaAuth => {
+      setAuthUser(isOktaAuth);
+    })
+  }, []);
+
+  return authUser;
+};
+
 export function Home() {
   useSwitchTheme();
   useLoadData();
@@ -258,7 +273,7 @@ export function Home() {
     initMcp();
   }, []);
 
-  if (!useHasHydrated()) {
+  if (!useAuthUser()) {
     return <Loading />;
   }
 
