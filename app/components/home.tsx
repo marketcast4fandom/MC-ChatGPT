@@ -239,14 +239,26 @@ export function useLoadData() {
 
 const useAuthUser = () => {
   const [authUser, setAuthUser] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    OktaSignIn().then(isOktaAuth => {
-      setAuthUser(isOktaAuth);
-    })
+    const checkAuth = async () => {
+      try {
+        setIsLoading(true);
+        const isOktaAuth = await OktaSignIn();
+        setAuthUser(isOktaAuth);
+      } catch (error) {
+        console.error("[Auth] Error checking Okta auth:", error);
+        setAuthUser(false);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    checkAuth();
   }, []);
 
-  return authUser;
+  return authUser; // Only return true when actually authenticated
 };
 
 export function Home() {
